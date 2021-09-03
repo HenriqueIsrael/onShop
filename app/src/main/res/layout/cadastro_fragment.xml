@@ -17,13 +17,13 @@
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_cadastro">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:backgroundTint="#FFFFFF"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:backgroundTint="#FFFFFF"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputEditText
@@ -69,7 +69,7 @@
             android:layout_height="60dp"
             android:backgroundTint="#FFFFFF"
             android:inputType="textPassword"
-            android:textSize="20sp">
+            android:textSize="18sp">
 
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
@@ -90,15 +90,16 @@
             android:layout_height="60dp"
             android:backgroundTint="#FFFFFF"
             android:inputType="textPassword"
-            android:textSize="20sp">
+            android:textSize="18sp">
 
         </com.google.android.material.textfield.TextInputEditText>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/bt_cadastrar"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:layout_marginTop="32dp"
         android:text="CADASTRAR"
         android:textAlignment="center"
@@ -110,7 +111,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
+        android:id="@+id/toolbar_cadastro"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -124,9 +125,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar2"
-        app:layout_constraintStart_toStartOf="@+id/toolbar2"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_cadastro"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar_cadastro"
+        app:layout_constraintStart_toStartOf="@+id/toolbar_cadastro"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView

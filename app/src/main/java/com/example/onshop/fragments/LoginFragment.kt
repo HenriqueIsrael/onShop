@@ -8,11 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.onshop.R
 import com.example.onshop.databinding.LoginFragmentBinding
+import com.example.onshop.viewmodel.LoginViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment: Fragment() {
 
     private var _binding: LoginFragmentBinding?= null
     private val binding: LoginFragmentBinding get() = _binding!!
+    private val viewModel: LoginViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,5 +32,12 @@ class LoginFragment: Fragment() {
         binding.cadastreSe.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_cadastroFragment)
         }
+
+        binding.switchSalvaLogin.setOnCheckedChangeListener { _, isChecked ->
+            if(isChecked){
+                viewModel.saveLogin(binding.campoEmail.text.toString(), binding.campoSenha.text.toString())
+            }
+        }
+
     }
 }

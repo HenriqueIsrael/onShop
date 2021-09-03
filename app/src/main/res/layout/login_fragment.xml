@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="230dp"
+        android:layout_height="190dp"
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +20,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="80dp"
         android:background="@color/whiteOnShop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="60dp"
             android:layout_marginEnd="32dp"
             android:hint="Insira seu e-mail"
             app:endIconMode="clear_text"
@@ -41,10 +41,11 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campo_email"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:backgroundTint="#FFFFFF"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -59,18 +60,19 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campo_senha"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:backgroundTint="#FFFFFF"
                 android:inputType="textPassword"
-                android:textSize="20sp">
+                android:textSize="18sp">
 
             </com.google.android.material.textfield.TextInputEditText>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <Switch
-            android:id="@+id/switch1"
+            android:id="@+id/switch_salva_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/textView"
@@ -87,17 +89,17 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/extendedFloatingActionButton"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:id="@+id/bt_efetuar_login"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="36dp"
             android:text="Efetuar login"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="14sp"
             android:textStyle="bold"
             app:backgroundTint="@color/blueOnShop"
-            app:layout_constraintEnd_toEndOf="@+id/switch1"
+            app:layout_constraintEnd_toEndOf="@+id/switch_salva_login"
             app:layout_constraintStart_toStartOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -109,7 +111,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/extendedFloatingActionButton">
+            app:layout_constraintTop_toBottomOf="@+id/bt_efetuar_login">
 
             <TextView
                 android:id="@+id/textView3"

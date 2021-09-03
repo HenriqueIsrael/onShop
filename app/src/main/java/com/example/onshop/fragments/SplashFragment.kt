@@ -5,6 +5,7 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.onshop.R
@@ -26,6 +27,8 @@ class SplashFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.imageOnShop.animation = AnimationUtils.loadAnimation(requireContext(), R.anim.splash_animation)
+
         Handler().postDelayed({
             findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
         },3000)
