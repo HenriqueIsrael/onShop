@@ -29,14 +29,37 @@ class LoginFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.cadastreSe.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_cadastroFragment)
-        }
+        viewModel.switchDefaultTrue()
+
+        viewModel.switchDefaultTrueLiveData.observe(viewLifecycleOwner, {
+            if(it)
+                binding.switchSalvaLogin.toggle()
+        })
+
+        viewModel.getEmail()
+
+        viewModel.emailLiveData.observe(viewLifecycleOwner, {
+            binding.campoEmail.setText(it)
+        })
+
+        viewModel.getSenha()
+
+        viewModel.senhaLiveData.observe(viewLifecycleOwner,{
+            binding.campoSenha.setText(it)
+        })
 
         binding.switchSalvaLogin.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
                 viewModel.saveLogin(binding.campoEmail.text.toString(), binding.campoSenha.text.toString())
+            } else {
+                viewModel.deleteLogin()
             }
+        }
+
+
+
+        binding.cadastreSe.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_cadastroFragment)
         }
 
     }

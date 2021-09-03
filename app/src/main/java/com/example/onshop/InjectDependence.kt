@@ -2,6 +2,7 @@ package com.example.onshop
 
 import android.content.Context
 import com.example.onshop.repository.LoginRepository
+import com.example.onshop.sharedpreference.SessionManager
 import com.example.onshop.viewmodel.LoginViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -15,6 +16,6 @@ val injectDependence = module {
         LoginRepository(get())
     }
     single {
-        androidContext().getSharedPreferences("saveData", Context.MODE_PRIVATE)
+        SessionManager((androidContext().getSharedPreferences("saveData", Context.MODE_PRIVATE)))
     }
 }

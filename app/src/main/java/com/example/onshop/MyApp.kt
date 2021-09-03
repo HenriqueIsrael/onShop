@@ -9,7 +9,7 @@ class MyApp: Application() {
         super.onCreate()
         startKoin {
             androidContext(this@MyApp)
-            modules()
+            modules(injectDependence)
         }
     }
 }

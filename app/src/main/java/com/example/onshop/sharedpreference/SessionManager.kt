@@ -10,4 +10,12 @@ class SessionManager(private val preference: SharedPreferences) {
             putString("senha",senha)
         }
     }
+
+    fun getEmail(): String?{
+        return preference.getString("email","")
+    }
+
+    fun getSenha(): String?{
+        return preference.getString("senha","")
+    }
 }
