@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "484410103299",
-    "project_id": "onshop-82ea1",
-    "storage_bucket": "onshop-82ea1.appspot.com"
+    "project_number": "269429006020",
+    "project_id": "onshop-c3dea",
+    "storage_bucket": "onshop-c3dea.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:484410103299:android:712d5e18752510e1102036",
+        "mobilesdk_app_id": "1:269429006020:android:a4d169c727c913abd73391",
         "android_client_info": {
-          "package_name": "com.exemple.onshop"
+          "package_name": "com.example.onshop"
         }
       },
       "oauth_client": [
         {
-          "client_id": "484410103299-latkjchmd1bc1lqu8pcu1g13c57ulgur.apps.googleusercontent.com",
+          "client_id": "269429006020-mosjhmo1sovese3ho7m2ri5rc0um2tb2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAzTo_4owZPn9_U8Wip0DxbSw61hE9Nq44"
+          "current_key": "AIzaSyA1bVcgPfW91ZLCkp-AJkZ8_ypke0__guc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "484410103299-latkjchmd1bc1lqu8pcu1g13c57ulgur.apps.googleusercontent.com",
+              "client_id": "269429006020-mosjhmo1sovese3ho7m2ri5rc0um2tb2.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
