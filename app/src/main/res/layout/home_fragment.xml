@@ -4,18 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/whiteOnShop">
+    android:background="@color/white">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:background="@color/grayOnShop"
+        android:background="@color/whiteOnShop"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
+        app:navigationIcon="@drawable/ic_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/menu_home"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -23,6 +25,40 @@
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintEnd_toEndOf="@+id/toolbar2"
         app:layout_constraintStart_toStartOf="@+id/toolbar2"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:text="Destaques"
+            android:textColor="@color/grayOnShop"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutCategorias"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager_produtos"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayoutCategorias" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

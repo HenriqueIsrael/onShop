@@ -34,6 +34,18 @@ class LoginFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.getEmail()
+
+        viewModel.emailLiveData.observe(viewLifecycleOwner, {
+            binding.campoEmail.setText(it)
+        })
+
+        viewModel.getSenha()
+
+        viewModel.senhaLiveData.observe(viewLifecycleOwner,{
+            binding.campoSenha.setText(it)
+        })
+
         viewModel.switchDefaultTrue()
 
         binding.btEfetuarLogin.setOnClickListener {
@@ -49,23 +61,9 @@ class LoginFragment: Fragment() {
                 }
         }
 
-
-
         viewModel.switchDefaultTrueLiveData.observe(viewLifecycleOwner, {
             if(it)
                 binding.switchSalvaLogin.toggle()
-        })
-
-        viewModel.getEmail()
-
-        viewModel.emailLiveData.observe(viewLifecycleOwner, {
-            binding.campoEmail.setText(it)
-        })
-
-        viewModel.getSenha()
-
-        viewModel.senhaLiveData.observe(viewLifecycleOwner,{
-            binding.campoSenha.setText(it)
         })
 
         binding.switchSalvaLogin.setOnCheckedChangeListener { _, isChecked ->
