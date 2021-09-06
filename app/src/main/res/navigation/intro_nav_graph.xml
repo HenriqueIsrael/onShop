@@ -22,10 +22,18 @@
         <action
             android:id="@+id/action_loginFragment_to_cadastroFragment"
             app:destination="@id/cadastroFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeActivity"
+            app:destination="@id/homeActivity" />
     </fragment>
     <fragment
         android:id="@+id/cadastroFragment"
         android:name="com.example.onshop.fragments.CadastroFragment"
         android:label="CadastroFragment"
         tools:layout="@layout/cadastro_fragment"/>
+    <activity
+        android:id="@+id/homeActivity"
+        android:name="com.example.onshop.activities.HomeActivity"
+        android:label="home_activity"
+        tools:layout="@layout/home_activity" />
 </navigation>
