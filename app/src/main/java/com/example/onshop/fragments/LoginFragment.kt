@@ -34,6 +34,8 @@ class LoginFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.switchDefaultTrue()
+
         binding.btEfetuarLogin.setOnClickListener {
             val email = binding.campoEmail.text.toString()
             val senha = binding.campoSenha.text.toString()
@@ -45,10 +47,9 @@ class LoginFragment: Fragment() {
                         Toast.makeText(requireContext(), "Credenciais inválidas!", Toast.LENGTH_SHORT).show()
                     }
                 }
-
         }
 
-        viewModel.switchDefaultTrue()
+
 
         viewModel.switchDefaultTrueLiveData.observe(viewLifecycleOwner, {
             if(it)
