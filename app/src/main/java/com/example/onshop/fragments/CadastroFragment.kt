@@ -1,9 +1,6 @@
 package com.example.onshop.fragments
 
-import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,16 +8,16 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.onshop.databinding.CadastroFragmentBinding
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.auth.AuthResult
+import com.example.onshop.viewmodel.CadastroViewModel
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class CadastroFragment : Fragment() {
 
     private var _binding: CadastroFragmentBinding? = null
     private val binding: CadastroFragmentBinding get() = _binding!!
+    private val viewModel: CadastroViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,25 +36,25 @@ class CadastroFragment : Fragment() {
         }
 
         binding.btCadastrar.setOnClickListener {
-            if (binding.campoEmailCadastrar.text.toString()
-                    .isEmpty() || binding.campoSenhaCadastrar.text.toString()
-                    .isEmpty() || binding.campoConfirmarSenhaCadastrar.text.toString() != binding.campoSenhaCadastrar.text.toString()
-            ) {
-                Toast.makeText(requireContext(), "Preencha os campos corretamente!", Toast.LENGTH_SHORT)
-                    .show()
-            } else {
-                val email: String = binding.campoEmailCadastrar.text.toString()
-                val senha: String = binding.campoSenhaCadastrar.text.toString()
-
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,senha)
-                    .addOnCompleteListener{
-                        if(!it.isSuccessful){
-                            Log.d("cadastro","funcionou ${it.result!!.user!!.uid}")
-                        }
-                    }
-            }
+            viewModel.validaDadosLogin(
+                binding.campoEmailCadastrar.text.toString(),
+                binding.campoSenhaCadastrar.text.toString(),
+                binding.campoConfirmarSenhaCadastrar.text.toString()
+            )
         }
+
+        viewModel.validaDadosLiveData.observe(viewLifecycleOwner,{
+            FirebaseAuth.getInstance().createUserWithEmailAndPassword(it.email, it.senha)
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        Toast.makeText(requireContext(), "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show()
+                        findNavController().navigateUp()
+                    }
+                }
+        })
+
+        viewModel.erroLiveData.observe(viewLifecycleOwner,{
+            Toast.makeText(requireContext(),it,Toast.LENGTH_LONG).show()
+        })
     }
-
-
 }
