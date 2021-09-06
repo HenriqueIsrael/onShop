@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.onshop.model.User
 import kotlinx.coroutines.launch
 
-class CadastroViewModel() : ViewModel() {
+class CadastroViewModel : ViewModel() {
 
     private val _validaDadosLiveData = MutableLiveData <User>()
     val validaDadosLiveData: LiveData<User> = _validaDadosLiveData
@@ -16,13 +16,10 @@ class CadastroViewModel() : ViewModel() {
     val erroLiveData: LiveData<String> = _erroLiveData
 
     fun validaDadosLogin(email: String, senha: String, confirmaSenha: String) {
-        viewModelScope.launch {
             if (email.isEmpty() || senha.isEmpty() || confirmaSenha != senha) {
                 _erroLiveData.postValue("Preencha os campos corretamente!")
             } else{
                 _validaDadosLiveData.postValue(User(email, senha))
             }
-        }
-
     }
 }
