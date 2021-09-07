@@ -63,7 +63,7 @@ class LoginFragment: Fragment() {
         })
 
         viewModel.erroLiveData.observe(viewLifecycleOwner,{
-            binding.layoutCampoEmail.error = it
+            binding.loginCampoEmail.error = it
         })
 
         viewModel.switchDefaultTrueLiveData.observe(viewLifecycleOwner, {
