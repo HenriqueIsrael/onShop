@@ -16,7 +16,7 @@ class CadastroViewModel : ViewModel() {
     val erroLiveData: LiveData<String> = _erroLiveData
 
     fun validaDadosLogin(email: String, senha: String, confirmaSenha: String) {
-            if (email.isEmpty() || senha.isEmpty() || confirmaSenha != senha) {
+            if (email.isEmpty() || senha.isEmpty() || confirmaSenha != senha || email.contains(" ")) {
                 _erroLiveData.postValue("Preencha os campos corretamente!")
             } else{
                 _validaDadosLiveData.postValue(User(email, senha))

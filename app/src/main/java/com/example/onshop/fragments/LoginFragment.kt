@@ -1,5 +1,6 @@
 package com.example.onshop.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -49,17 +50,21 @@ class LoginFragment: Fragment() {
         viewModel.switchDefaultTrue()
 
         binding.btEfetuarLogin.setOnClickListener {
-            val email = binding.campoEmail.text.toString()
-            val senha = binding.campoSenha.text.toString()
-            auth.signInWithEmailAndPassword(email,senha)
+            viewModel.validaDadosLogin(binding.campoEmail.text.toString(),binding.campoSenha.text.toString())
+        }
+
+        viewModel.validaDadosLiveData.observe(viewLifecycleOwner,{
+            auth.signInWithEmailAndPassword(it.email, it.senha)
                 .addOnCompleteListener(requireActivity()) { task ->
                     if (task.isSuccessful) {
                         findNavController().navigate(R.id.action_loginFragment_to_homeActivity)
-                    } else {
-                        Toast.makeText(requireContext(), "Credenciais inválidas!", Toast.LENGTH_SHORT).show()
                     }
                 }
-        }
+        })
+
+        viewModel.erroLiveData.observe(viewLifecycleOwner,{
+            binding.layoutCampoEmail.error = it
+        })
 
         viewModel.switchDefaultTrueLiveData.observe(viewLifecycleOwner, {
             if(it)

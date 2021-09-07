@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_onshop"
-    android:hapticFeedbackEnabled="false" >
+    android:hapticFeedbackEnabled="false">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -28,13 +28,13 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout"
+            android:id="@+id/layout_campo_email"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="60dp"
             android:layout_marginEnd="32dp"
-            android:hint="Insira seu e-mail"
+            android:hint="E-mail"
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,8 +45,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:backgroundTint="#FFFFFF"
+                android:inputType="textEmailAddress"
                 android:textSize="18sp" />
+
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
@@ -55,9 +58,9 @@
             android:layout_marginTop="16dp"
             android:hint="Insira sua senha"
             app:endIconMode="password_toggle"
-            app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
-            app:layout_constraintStart_toStartOf="@+id/textInputLayout"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+            app:layout_constraintEnd_toEndOf="@+id/layout_campo_email"
+            app:layout_constraintStart_toStartOf="@+id/layout_campo_email"
+            app:layout_constraintTop_toBottomOf="@+id/layout_campo_email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/campo_senha"
@@ -143,7 +146,6 @@
                 app:layout_constraintStart_toEndOf="@+id/textView3"
                 app:layout_constraintTop_toTopOf="@+id/textView3" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
