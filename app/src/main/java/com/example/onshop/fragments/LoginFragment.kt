@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.onshop.R
@@ -58,12 +59,26 @@ class LoginFragment: Fragment() {
                 .addOnCompleteListener(requireActivity()) { task ->
                     if (task.isSuccessful) {
                         findNavController().navigate(R.id.action_loginFragment_to_homeActivity)
+                    } else {
+                        AlertDialog.Builder(requireContext()).setMessage("Informações de login incorretas   =(").show()
                     }
                 }
         })
 
-        viewModel.erroLiveData.observe(viewLifecycleOwner,{
+        viewModel.erroEmailLiveData.observe(viewLifecycleOwner,{
             binding.loginCampoEmail.error = it
+        })
+
+        binding.campoEmail.addTextChangedListener {
+            binding.loginCampoEmail.isErrorEnabled = false
+        }
+
+        binding.campoSenha.addTextChangedListener {
+            binding.loginCampoSenha.isErrorEnabled = false
+        }
+
+        viewModel.erroSenhaLiveData.observe(viewLifecycleOwner,{
+            binding.loginCampoSenha.error = it
         })
 
         viewModel.switchDefaultTrueLiveData.observe(viewLifecycleOwner, {

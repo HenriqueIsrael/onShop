@@ -30,7 +30,11 @@
         android:id="@+id/cadastroFragment"
         android:name="com.example.onshop.fragments.CadastroFragment"
         android:label="CadastroFragment"
-        tools:layout="@layout/cadastro_fragment"/>
+        tools:layout="@layout/cadastro_fragment">
+        <action
+            android:id="@+id/action_cadastroFragment_to_homeActivity"
+            app:destination="@id/homeActivity" />
+    </fragment>
     <activity
         android:id="@+id/homeActivity"
         android:name="com.example.onshop.activities.HomeActivity"

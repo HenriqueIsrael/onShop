@@ -3,6 +3,7 @@ package com.example.onshop.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.onshop.SingleLiveEvent
 import com.example.onshop.model.User
 import com.example.onshop.repository.LoginRepository
 
@@ -17,11 +18,14 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _switchDefaultTrueLiveData = MutableLiveData <Boolean>()
     val switchDefaultTrueLiveData : LiveData <Boolean> = _switchDefaultTrueLiveData
 
-    private val _validaDadosLiveData = MutableLiveData <User>()
+    private val _validaDadosLiveData = SingleLiveEvent <User>()
     val validaDadosLiveData: LiveData<User> = _validaDadosLiveData
 
-    private val _erroLiveData = MutableLiveData <String>()
-    val erroLiveData: LiveData<String> = _erroLiveData
+    private val _erroEmailLiveData = SingleLiveEvent <String>()
+    val erroEmailLiveData: LiveData<String> = _erroEmailLiveData
+
+    private val _erroSenhaLiveData = SingleLiveEvent <String>()
+    val erroSenhaLiveData: LiveData<String> = _erroSenhaLiveData
 
     fun saveLogin(email: String, senha: String) {
         loginRepository.saveLogin(email,senha)
@@ -48,10 +52,16 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     }
 
     fun validaDadosLogin(email: String, senha: String) {
-        if(email.isEmpty() || senha.isEmpty()){
-            _erroLiveData.postValue("Preencha os campos corretamente!")
-        } else {
-            _validaDadosLiveData.postValue(User(email,senha))
+        when {
+            email.isEmpty() -> {
+                _erroEmailLiveData.postValue("E-mail inválido")
+            }
+            senha.isEmpty() -> {
+                _erroSenhaLiveData.postValue("Senha inválida")
+            }
+            else -> {
+                _validaDadosLiveData.postValue(User(email,senha))
+            }
         }
     }
 }

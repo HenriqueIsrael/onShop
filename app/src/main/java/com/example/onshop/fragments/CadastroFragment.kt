@@ -1,12 +1,15 @@
 package com.example.onshop.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.onshop.R
 import com.example.onshop.databinding.CadastroFragmentBinding
 import com.example.onshop.viewmodel.CadastroViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -37,24 +40,46 @@ class CadastroFragment : Fragment() {
 
         binding.btCadastrar.setOnClickListener {
             viewModel.validaDadosLogin(
-                binding.campoEmailCadastrar.text.toString(),
-                binding.campoSenhaCadastrar.text.toString(),
-                binding.campoConfirmarSenhaCadastrar.text.toString()
+                binding.campoEmailCadastro.text.toString(),
+                binding.campoSenhaCadastro.text.toString(),
+                binding.campoSenhaConfirmarCadastro.text.toString()
             )
         }
 
-        viewModel.validaDadosLiveData.observe(viewLifecycleOwner,{
+        viewModel.fazCadastroLiveData.observe(viewLifecycleOwner,{
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(it.email, it.senha)
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
                         Toast.makeText(requireContext(), "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show()
-                        findNavController().navigateUp()
+                        findNavController().navigate(R.id.action_cadastroFragment_to_homeActivity)
+                    } else {
+                        AlertDialog.Builder(requireContext()).setMessage("Por favor, insira um e-mail válido e uma senha com pelo menos 6 caracteres.").show()
                     }
                 }
         })
 
-        viewModel.erroLiveData.observe(viewLifecycleOwner,{
-            Toast.makeText(requireContext(),it,Toast.LENGTH_LONG).show()
+        viewModel.validaEmailLiveData.observe(viewLifecycleOwner,{
+            binding.cadastroCampoEmail.error = it
         })
+
+        binding.campoEmailCadastro.addTextChangedListener {
+            binding.cadastroCampoEmail.isErrorEnabled = false
+        }
+
+        viewModel.validaSenhaLiveData.observe(viewLifecycleOwner,{
+            binding.cadastroCampoSenha.error = it
+        })
+
+        binding.campoSenhaCadastro.addTextChangedListener {
+            binding.cadastroCampoSenha.isErrorEnabled = false
+        }
+
+        viewModel.validaSenhaLiveData.observe(viewLifecycleOwner,{
+            binding.cadastroCampoConfirmarSenha.error = it
+        })
+
+        binding.campoSenhaConfirmarCadastro.addTextChangedListener {
+            binding.cadastroCampoConfirmarSenha.isErrorEnabled = false
+        }
     }
 }
