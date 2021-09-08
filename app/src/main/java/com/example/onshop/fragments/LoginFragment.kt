@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -64,6 +66,11 @@ class LoginFragment: Fragment() {
                     }
                 }
         })
+
+        viewModel.loadingLiveData.observe(viewLifecycleOwner,{
+            binding.loading.isVisible = it
+        })
+
 
         viewModel.erroEmailLiveData.observe(viewLifecycleOwner,{
             binding.loginCampoEmail.error = it

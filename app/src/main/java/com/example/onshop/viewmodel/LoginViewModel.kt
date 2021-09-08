@@ -3,9 +3,13 @@ package com.example.onshop.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.onshop.SingleLiveEvent
 import com.example.onshop.model.User
 import com.example.onshop.repository.LoginRepository
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel(){
 
@@ -26,6 +30,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     private val _erroSenhaLiveData = SingleLiveEvent <String>()
     val erroSenhaLiveData: LiveData<String> = _erroSenhaLiveData
+
+    private val _loadingLiveData = SingleLiveEvent <Boolean>()
+    val loadingLiveData: LiveData<Boolean> = _loadingLiveData
 
     fun saveLogin(email: String, senha: String) {
         loginRepository.saveLogin(email,senha)
@@ -60,7 +67,13 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
                 _erroSenhaLiveData.postValue("Senha inválida")
             }
             else -> {
-                _validaDadosLiveData.postValue(User(email,senha))
+                viewModelScope.launch {
+                    _loadingLiveData.postValue(true)
+                     delay(2000L)
+                    _validaDadosLiveData.postValue(User(email,senha))
+                    _loadingLiveData.postValue(false)
+                }
+
             }
         }
     }

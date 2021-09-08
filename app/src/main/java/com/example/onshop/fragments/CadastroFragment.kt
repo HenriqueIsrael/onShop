@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -57,6 +58,11 @@ class CadastroFragment : Fragment() {
                     }
                 }
         })
+
+        viewModel.loadingLiveData.observe(viewLifecycleOwner,{
+            binding.loadingCadastro.isVisible = it
+        })
+
 
         viewModel.validaEmailLiveData.observe(viewLifecycleOwner,{
             binding.cadastroCampoEmail.error = it
