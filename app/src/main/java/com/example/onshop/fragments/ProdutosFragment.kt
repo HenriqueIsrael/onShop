@@ -23,14 +23,21 @@ class ProdutosFragment : Fragment() {
         return _binding!!.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(requireArguments().getInt("ordenar")==1){
-            binding.recyclerViewProdutos.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+
+        if (requireArguments().getInt("ordenar") == 1) {
+            binding.recyclerViewProdutos.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         } else {
-            binding.recyclerViewProdutos.layoutManager =  GridLayoutManager(requireContext(),2,GridLayoutManager.VERTICAL,false)
+            binding.recyclerViewProdutos.layoutManager =
+                GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
         }
-        binding.recyclerViewProdutos.adapter = RecyclerViewAdapter(requireArguments().getInt("ordenar"), requireArguments().getInt("posicao"))
+        binding.recyclerViewProdutos.adapter = RecyclerViewAdapter(
+            requireArguments().getInt("ordenar"),
+            requireArguments().getInt("posicao")
+        )
     }
 }
 
