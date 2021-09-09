@@ -18,10 +18,18 @@
         android:id="@+id/carrinhoFragment"
         android:name="com.example.onshop.fragments.CarrinhoFragment"
         android:label="CarrinhoFragment"
-        tools:layout="@layout/carrinho_fragment"/>
+        tools:layout="@layout/carrinho_fragment">
+        <action
+            android:id="@+id/action_carrinhoFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoritoFragment"
         android:name="com.example.onshop.fragments.FavoritoFragment"
         android:label="FavoritoFragment"
-        tools:layout="@layout/favorito_fragment"/>
+        tools:layout="@layout/favorito_fragment">
+        <action
+            android:id="@+id/action_favoritoFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.onshop.R
 import com.example.onshop.databinding.FavoritoFragmentBinding
 
 class FavoritoFragment: Fragment() {
@@ -23,5 +25,8 @@ class FavoritoFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.btExplorarProdutos.setOnClickListener {
+            findNavController().navigate(R.id.action_favoritoFragment_to_homeFragment)
+        }
     }
 }

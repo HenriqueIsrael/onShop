@@ -10,6 +10,7 @@ import com.example.onshop.R
 
 class RecyclerViewAdapter(private val ordem: Int, private val posicaoPagina: Int) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    //Qual layout vai ser usado
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if (ordem == 1) {
             return ListaViewHolder(
@@ -24,7 +25,7 @@ class RecyclerViewAdapter(private val ordem: Int, private val posicaoPagina: Int
         }
 
     }
-
+    //Pega os dados e exibe na tela
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if(posicaoPagina==0){
             if (holder is BlocoViewHolder) {

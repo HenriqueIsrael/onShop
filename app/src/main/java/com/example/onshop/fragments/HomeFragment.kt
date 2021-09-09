@@ -27,6 +27,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.toolbarDestaque.setNavigationOnClickListener {
+            AlertDialog.Builder(requireContext()).setMessage("ABA LATERAL").show()
+        }
+
+
         binding.viewPagerProdutos.adapter = ViewPagerAdapter(this, ORDENAR_BLOCOS)
 
         TabLayoutMediator(
@@ -45,10 +50,6 @@ class HomeFragment : Fragment() {
                 }
             }
         }.attach()
-
-        binding.toolbarDestaque.setNavigationOnClickListener {
-            AlertDialog.Builder(requireContext()).setMessage("ABA LATERAL").show()
-        }
 
         binding.toolbarDestaque.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
