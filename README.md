@@ -23,5 +23,6 @@
 ## Bônus
 - Implementar estoque no carrinho de compras
 - Substituir o sharedPreference pelo firebase no login
-- Implementar um chatbot bip.io
+- Cadastros de novos usuários usando o firebase
+- Tela de perfil do usuário
   
