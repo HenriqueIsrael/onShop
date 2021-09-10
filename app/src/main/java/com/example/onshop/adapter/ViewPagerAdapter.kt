@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.onshop.fragments.ProdutosFragment
 
-class ViewPagerAdapter(fragment: Fragment, private val ordenar: Int): FragmentStateAdapter(fragment) {
+class ViewPagerAdapter(fragment: Fragment, private val ordenar: Int, private val paginaTotal: Int): FragmentStateAdapter(fragment) {
     //Numero de paginas do viewpager
     override fun getItemCount(): Int {
-        return 3
+        return paginaTotal
     }
 
     //qual fragmento vai ser aberto em cada página

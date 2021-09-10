@@ -9,11 +9,15 @@ import androidx.fragment.app.Fragment
 import com.example.onshop.R
 import com.example.onshop.adapter.ViewPagerAdapter
 import com.example.onshop.databinding.HomeFragmentBinding
+import com.example.onshop.viewmodel.HomeViewModel
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
     private var _binding: HomeFragmentBinding? = null
     private val binding: HomeFragmentBinding get() = _binding!!
+    private val viewModel: HomeViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,34 +35,46 @@ class HomeFragment : Fragment() {
             AlertDialog.Builder(requireContext()).setMessage("ABA LATERAL").show()
         }
 
+        viewModel.getCategorias()
 
-        binding.viewPagerProdutos.adapter = ViewPagerAdapter(this, ORDENAR_BLOCOS)
-
-        TabLayoutMediator(
-            binding.tabLayoutCategorias,
-            binding.viewPagerProdutos
-        ) { tab, position ->
-            when (position) {
-                0 -> {
-                    tab.text = "Cadeiras"
-                }
-                1 -> {
-                    tab.text = "Notebooks"
-                }
-                2 -> {
-                    tab.text = "Celulares"
-                }
-            }
-        }.attach()
+        viewModel.listaCategoriasLiveData.observe(viewLifecycleOwner, {
+            binding.viewPagerProdutos.adapter = ViewPagerAdapter(this, ORDENAR_BLOCOS, it.size)
+            binding.tabLayoutCategorias.tabMode = TabLayout.MODE_SCROLLABLE
+            TabLayoutMediator(
+                binding.tabLayoutCategorias,
+                binding.viewPagerProdutos
+            ) { tab, position ->
+                tab.text = it[position].nome
+//                when (position) {
+//                    0 -> {
+//                        tab.text = "Cadeiras"
+//                    }
+//                    1 -> {
+//                        tab.text = "Notebooks"
+//                    }
+//                    2 -> {
+//                        tab.text = "Celulares"
+//                    }
+//                }
+            }.attach()
+        })
 
         binding.toolbarDestaque.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.ordenarLista -> {
-                    binding.viewPagerProdutos.adapter = ViewPagerAdapter(this, ORDENAR_LISTA)
+                    binding.viewPagerProdutos.adapter = ViewPagerAdapter(
+                        this,
+                        ORDENAR_LISTA,
+                        5
+                    )
                     true
                 }
                 R.id.ordenarBlocos -> {
-                    binding.viewPagerProdutos.adapter = ViewPagerAdapter(this, ORDENAR_BLOCOS)
+                    binding.viewPagerProdutos.adapter = ViewPagerAdapter(
+                        this,
+                        ORDENAR_BLOCOS,
+                        5
+                    )
                     true
                 }
                 else -> false
@@ -66,7 +82,8 @@ class HomeFragment : Fragment() {
 
         }
     }
-    companion object{
+
+    companion object {
         const val ORDENAR_LISTA = 1
         const val ORDENAR_BLOCOS = 2
     }

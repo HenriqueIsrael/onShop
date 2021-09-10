@@ -28,7 +28,7 @@
                 app:srcCompat="@drawable/cadeira" />
 
             <TextView
-                android:id="@+id/nome_do_item"
+                android:id="@+id/nome_produto_bloco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -40,25 +40,25 @@
                 app:layout_constraintTop_toBottomOf="@+id/imagem_produto_bloco" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/preco_produto_bloco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="R$ 675,90"
                 android:textColor="@color/blueOnShop"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/nome_do_item"
-                app:layout_constraintTop_toBottomOf="@+id/nome_do_item" />
+                app:layout_constraintStart_toStartOf="@+id/nome_produto_bloco"
+                app:layout_constraintTop_toBottomOf="@+id/nome_produto_bloco" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/descricao_produto_bloco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Melhor custo benefício"
                 android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/textView8"
-                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+                app:layout_constraintStart_toStartOf="@+id/preco_produto_bloco"
+                app:layout_constraintTop_toBottomOf="@+id/preco_produto_bloco" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

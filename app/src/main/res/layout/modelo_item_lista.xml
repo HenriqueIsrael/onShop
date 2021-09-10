@@ -28,10 +28,9 @@
                 app:srcCompat="@drawable/cadeira" />
 
             <TextView
-                android:id="@+id/titulo_produto"
+                android:id="@+id/nome_produto_lista"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:text="Cadeira Flexform"
                 android:textColor="@color/black"
                 android:textSize="14sp"
@@ -40,25 +39,27 @@
                 app:layout_constraintTop_toTopOf="@+id/imagem_produto_lista" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/preco_produto_lista"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="R$ 675,00"
                 android:textColor="@color/blueOnShop"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/titulo_produto"
-                app:layout_constraintTop_toBottomOf="@+id/titulo_produto" />
+                app:layout_constraintStart_toStartOf="@+id/nome_produto_lista"
+                app:layout_constraintTop_toBottomOf="@+id/nome_produto_lista" />
 
             <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
+                android:id="@+id/descricao_produto_lista"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="20dp"
                 android:text="Melhor custo benefício"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/textView6"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/preco_produto_lista"
+                app:layout_constraintTop_toBottomOf="@+id/preco_produto_lista" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
