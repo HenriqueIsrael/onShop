@@ -48,7 +48,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:inputType="textEmailAddress" />
+                android:fontFamily="@font/poppins"
+                android:inputType="textEmailAddress"
+                android:textSize="18sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,6 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:backgroundTint="#FFFFFF"
+                android:fontFamily="@font/poppins"
                 android:inputType="textPassword"
                 android:textSize="18sp">
 
@@ -112,6 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins"
             android:text="Lembrar de mim"
             app:layout_constraintStart_toStartOf="@+id/login_campo_senha"
             app:layout_constraintTop_toBottomOf="@+id/login_campo_senha" />
@@ -121,6 +125,7 @@
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_marginTop="36dp"
+            android:fontFamily="@font/poppins"
             android:text="Efetuar login"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -146,7 +151,8 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="52dp"
+                android:layout_marginStart="28dp"
+                android:fontFamily="@font/poppins"
                 android:text="Não é cadastrado? "
                 android:textAlignment="center"
                 android:textColor="@color/white"
@@ -160,16 +166,17 @@
                 android:id="@+id/cadastre_se"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginEnd="28dp"
                 android:clickable="true"
                 android:focusable="true"
+                android:fontFamily="@font/poppins"
                 android:foreground="?selectableItemBackground"
                 android:text="Cadastre-se agora"
                 android:textColor="@color/white"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/textView3"
-                app:layout_constraintStart_toEndOf="@+id/textView3"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView3" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

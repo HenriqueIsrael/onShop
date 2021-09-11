@@ -7,7 +7,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="180dp"
-        android:layout_height="250dp"
+        android:layout_height="280dp"
         android:layout_marginTop="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,6 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins"
                 android:text="Cadeira Flexform"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -44,6 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:fontFamily="@font/poppins"
                 android:text="R$ 675,90"
                 android:textColor="@color/blueOnShop"
                 android:textStyle="bold"
@@ -52,11 +54,13 @@
 
             <TextView
                 android:id="@+id/descricao_produto_bloco"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:fontFamily="@font/poppins"
                 android:text="Melhor custo benefício"
-                android:textSize="12sp"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/preco_produto_bloco"
                 app:layout_constraintTop_toBottomOf="@+id/preco_produto_bloco" />
         </androidx.constraintlayout.widget.ConstraintLayout>
