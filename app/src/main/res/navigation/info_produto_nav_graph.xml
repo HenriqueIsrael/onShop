@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/info_produto_nav_graph"
+    app:startDestination="@id/infoProdutoFragment">
+
+    <fragment
+        android:id="@+id/infoProdutoFragment"
+        android:name="com.example.onshop.fragments.InfoProdutoFragment"
+        android:label="InfoProdutoFragment"
+        tools:layout="@layout/info_produto_fragment"/>
+</navigation>

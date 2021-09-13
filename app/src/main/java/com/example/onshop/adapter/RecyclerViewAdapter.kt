@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.onshop.R
+import com.example.onshop.fragments.ProdutosFragment
 import com.example.onshop.model.Produto
 import com.squareup.picasso.Picasso
 import java.text.NumberFormat
@@ -14,7 +15,8 @@ import java.util.*
 
 class RecyclerViewAdapter(
     private val listaProdutos: List<Produto>,
-    private val ordem: Int
+    private val ordem: Int,
+    private val cliqueNoProduto: CliqueNoProduto
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     //Qual layout vai ser usado
@@ -48,6 +50,14 @@ class RecyclerViewAdapter(
             Picasso.with(holder.imagem.context).load(listaProdutos[position].imagem)
                 .into(holder.imagem)
         }
+        holder.itemView.setOnClickListener {
+            cliqueNoProduto.clicouNoProduto(
+                listaProdutos[position].imagem,
+                listaProdutos[position].nome,
+                listaProdutos[position].descricao,
+                listaProdutos[position].preco.toString()
+            )
+        }
     }
 
 
@@ -73,5 +83,4 @@ class RecyclerViewAdapter(
         return NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
             .format(preco)
     }
-
 }
