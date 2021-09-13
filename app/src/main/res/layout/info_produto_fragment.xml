@@ -49,12 +49,12 @@
             android:focusable="true"
             android:foreground="?selectableItemBackground"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView5"
+            app:layout_constraintEnd_toStartOf="@+id/bt_carrinho"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_nao_favorito" />
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/bt_carrinho"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="24dp"

@@ -2,13 +2,11 @@ package com.example.onshop
 
 import android.content.Context
 import com.example.onshop.repository.HomeRepository
+import com.example.onshop.repository.InfoProdutoRepository
 import com.example.onshop.repository.LoginRepository
 import com.example.onshop.repository.ProdutoRepository
 import com.example.onshop.sharedpreference.SessionManager
-import com.example.onshop.viewmodel.CadastroViewModel
-import com.example.onshop.viewmodel.HomeViewModel
-import com.example.onshop.viewmodel.LoginViewModel
-import com.example.onshop.viewmodel.ProdutoViewModel
+import com.example.onshop.viewmodel.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -40,5 +38,11 @@ val injectDependence = module {
     }
     factory {
         HomeRepository(get())
+    }
+    viewModel {
+        InfoProdutoViewModel(get())
+    }
+    factory {
+        InfoProdutoRepository()
     }
 }

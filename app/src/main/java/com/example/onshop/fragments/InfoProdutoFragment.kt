@@ -6,15 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.onshop.R
 import com.example.onshop.databinding.InfoProdutoFragmentBinding
+import com.example.onshop.viewmodel.InfoProdutoViewModel
 import com.squareup.picasso.Picasso
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.NumberFormat
 import java.util.*
 
 class InfoProdutoFragment : Fragment() {
     private var _binding: InfoProdutoFragmentBinding? = null
     private val binding: InfoProdutoFragmentBinding get() = _binding!!
-
+    private val viewModel: InfoProdutoViewModel by viewModel()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,6 +37,30 @@ class InfoProdutoFragment : Fragment() {
         val intent = requireActivity().intent
 
         setaDadosProdutos()
+
+        binding.btFavorito.setOnClickListener {
+            viewModel.cliqueBotaoFavorito()
+        }
+
+        viewModel.coracaoColorido.observe(viewLifecycleOwner,{
+            if(it){
+                binding.btFavorito.setImageResource(R.drawable.ic_favoritar)
+            } else {
+                binding.btFavorito.setImageResource(R.drawable.ic_nao_favorito)
+            }
+        })
+
+        binding.btCarrinho.setOnClickListener {
+            viewModel.cliqueBotaoCarrinho()
+        }
+
+        viewModel.carrinhoColorido.observe(viewLifecycleOwner,{
+            if(it){
+                binding.btCarrinho.setImageResource(R.drawable.ic_colocou_carrinho_compra)
+            } else {
+                binding.btCarrinho.setImageResource(R.drawable.ic_tirar_carrinho_compra)
+            }
+        })
     }
 
     private fun setaDadosProdutos() {
