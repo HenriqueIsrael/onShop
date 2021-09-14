@@ -46,9 +46,21 @@ class InfoProdutoFragment : Fragment() {
         viewModel.coracaoColorido.observe(viewLifecycleOwner,{
             if(it){
                 binding.btFavorito.setImageResource(R.drawable.ic_favoritar)
-                //Toast.makeText(requireContext(),"Deu certo",Toast.LENGTH_SHORT).show()
             } else {
                 binding.btFavorito.setImageResource(R.drawable.ic_nao_favorito)
+            }
+        })
+
+        viewModel.controleSalvaFavorito.observe(viewLifecycleOwner,{
+            if(it){
+                viewModel.enviaProdutoFavorito(
+                    intent.getStringExtra("imagem")!!,
+                    intent.getStringExtra("nomeItem")!!
+                )
+            } else {
+                viewModel.deletaProdutoFavorito(
+                    intent.getStringExtra("nomeItem")!!
+                )
             }
         })
 
@@ -64,21 +76,32 @@ class InfoProdutoFragment : Fragment() {
             }
         })
 
-        viewModel.controleSalvaFavorito.observe(viewLifecycleOwner,{
+        viewModel.controleColocaNoCarrinho.observe(viewLifecycleOwner,{
             if(it){
-                viewModel.enviaProduto(
+                viewModel.enviaProdutoCarrinho(
                     intent.getStringExtra("imagem")!!,
                     intent.getStringExtra("nomeItem")!!,
                     intent.getStringExtra("descricao")!!,
                     intent.getStringExtra("preco")!!
                 )
             } else {
-                viewModel.deletaProduto(
+                viewModel.deletaProdutoCarrinho(
                     intent.getStringExtra("nomeItem")!!
                 )
             }
         })
 
+        viewModel.getListaProdutosFavoritos()
+
+        viewModel.listaProdutosFavoritos.observe(viewLifecycleOwner,{
+          //  binding.nomedarecyclerview.adapter = nomeadapter(it)
+        })
+
+        viewModel.getListaProdutosCarrinho()
+
+        viewModel.listaProdutosCarrinho.observe(viewLifecycleOwner,{
+            //binding.nomedarecyclerview.adapter = nomeadapter(it)
+        })
     }
 
     private fun setaDadosProdutos() {
@@ -91,6 +114,11 @@ class InfoProdutoFragment : Fragment() {
 
         binding.descricaoInfoProduto.text = intent.getStringExtra("descricao")
 
-        binding.precoInfoProduto.text = "R$ "+ intent.getStringExtra("preco")
+        binding.precoInfoProduto.text = convertePreco(intent.getStringExtra("preco")!!)
+    }
+
+    fun convertePreco(preco: String): String {
+        return NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
+            .format(preco.toDouble())
     }
 }

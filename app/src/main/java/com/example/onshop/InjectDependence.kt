@@ -44,9 +44,12 @@ val injectDependence = module {
         InfoProdutoViewModel(get())
     }
     factory {
-        InfoProdutoRepository(get())
+        InfoProdutoRepository(get(), get())
     }
     single {
         AppDatabase.getInstanceDatabase(androidContext()).favoritoDAO()
+    }
+    single{
+        AppDatabase.getInstanceDatabase(androidContext()).carrinhoDAO()
     }
 }

@@ -4,9 +4,11 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class ModeloFavorito(
+data class ModeloCarrinho(
     val imagem: String,
-    val nomeItem: String
+    val nomeItem: String,
+    val descricao: String,
+    val preco: String
 ){
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
