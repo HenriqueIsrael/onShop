@@ -13,6 +13,9 @@ class InfoProdutoViewModel(private val infoProdutoRepository: InfoProdutoReposit
     private val _carrinhoColorido = MutableLiveData<Boolean>()
     val carrinhoColorido: LiveData<Boolean> = _carrinhoColorido
 
+    private val _controleSalvaFavorito = MutableLiveData<Boolean>()
+    val controleSalvaFavorito: LiveData<Boolean> = _controleSalvaFavorito
+
     fun cliqueBotaoFavorito() {
         if (coracaoColorido.value == true) {
             _coracaoColorido.postValue(false)
@@ -27,6 +30,14 @@ class InfoProdutoViewModel(private val infoProdutoRepository: InfoProdutoReposit
         } else {
             _carrinhoColorido.postValue(true)
         }
+    }
+
+    fun enviaProduto(imagem: String, nomeItem: String, descricao: String, preco: String) {
+        infoProdutoRepository.salvaProduto(imagem,nomeItem,descricao,preco)
+    }
+
+    fun deletaProduto(nomeItem: String) {
+        infoProdutoRepository.deletaFilme(nomeItem)
     }
 
 

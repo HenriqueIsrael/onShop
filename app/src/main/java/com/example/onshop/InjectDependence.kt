@@ -1,6 +1,7 @@
 package com.example.onshop
 
 import android.content.Context
+import com.example.onshop.dados.AppDatabase
 import com.example.onshop.repository.HomeRepository
 import com.example.onshop.repository.InfoProdutoRepository
 import com.example.onshop.repository.LoginRepository
@@ -43,6 +44,9 @@ val injectDependence = module {
         InfoProdutoViewModel(get())
     }
     factory {
-        InfoProdutoRepository()
+        InfoProdutoRepository(get())
+    }
+    single {
+        AppDatabase.getInstanceDatabase(androidContext()).favoritoDAO()
     }
 }

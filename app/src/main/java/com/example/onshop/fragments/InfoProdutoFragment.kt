@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.onshop.R
@@ -45,6 +46,7 @@ class InfoProdutoFragment : Fragment() {
         viewModel.coracaoColorido.observe(viewLifecycleOwner,{
             if(it){
                 binding.btFavorito.setImageResource(R.drawable.ic_favoritar)
+                //Toast.makeText(requireContext(),"Deu certo",Toast.LENGTH_SHORT).show()
             } else {
                 binding.btFavorito.setImageResource(R.drawable.ic_nao_favorito)
             }
@@ -61,6 +63,22 @@ class InfoProdutoFragment : Fragment() {
                 binding.btCarrinho.setImageResource(R.drawable.ic_tirar_carrinho_compra)
             }
         })
+
+        viewModel.controleSalvaFavorito.observe(viewLifecycleOwner,{
+            if(it){
+                viewModel.enviaProduto(
+                    intent.getStringExtra("imagem")!!,
+                    intent.getStringExtra("nomeItem")!!,
+                    intent.getStringExtra("descricao")!!,
+                    intent.getStringExtra("preco")!!
+                )
+            } else {
+                viewModel.deletaProduto(
+                    intent.getStringExtra("nomeItem")!!
+                )
+            }
+        })
+
     }
 
     private fun setaDadosProdutos() {
