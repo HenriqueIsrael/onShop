@@ -16,9 +16,4 @@
         android:id="@+id/carrinhoFragment"
         android:title="Carrinho"
         android:icon="@drawable/ic_carrinho_de_compras" />
-
-    <item
-        android:id="@+id/perfilFragment"
-        android:title="Perfil"
-        android:icon="@drawable/ic_perfil" />
 </menu>

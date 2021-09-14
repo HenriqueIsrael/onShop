@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.onshop.model.ModeloCarrinho
-import com.example.onshop.model.ModeloFavorito
 import com.example.onshop.repository.InfoProdutoRepository
 
 class InfoProdutoViewModel(private val infoProdutoRepository: InfoProdutoRepository): ViewModel() {
@@ -20,9 +19,6 @@ class InfoProdutoViewModel(private val infoProdutoRepository: InfoProdutoReposit
 
     private val _controleColocaNoCarrinho = MutableLiveData<Boolean>()
     val controleColocaNoCarrinho: LiveData<Boolean> = _controleColocaNoCarrinho
-
-    private val _listaProdutosFavoritos= MutableLiveData<List<ModeloFavorito>>()
-    val listaProdutosFavoritos: LiveData<List<ModeloFavorito>> = _listaProdutosFavoritos
 
     private val _listaProdutosCarrinho= MutableLiveData<List<ModeloCarrinho>>()
     val listaProdutosCarrinho: LiveData<List<ModeloCarrinho>> = _listaProdutosCarrinho
@@ -47,8 +43,13 @@ class InfoProdutoViewModel(private val infoProdutoRepository: InfoProdutoReposit
         }
     }
 
-    fun enviaProdutoFavorito(imagem: String, nomeItem: String) {
-        infoProdutoRepository.salvaProdutoFavorito(imagem,nomeItem)
+    fun enviaProdutoFavorito(
+        imagem: String,
+        nomeItem: String,
+        descricao: String,
+        preco: String
+    ) {
+        infoProdutoRepository.salvaProdutoFavorito(imagem,nomeItem,descricao,preco)
     }
 
     fun deletaProdutoFavorito(nomeItem: String) {
@@ -63,11 +64,16 @@ class InfoProdutoViewModel(private val infoProdutoRepository: InfoProdutoReposit
         infoProdutoRepository.deletaProdutoCarrinho(nomeItem)
     }
 
-    fun getListaProdutosFavoritos(){
-        _listaProdutosFavoritos.postValue(infoProdutoRepository.getListaProdutosFavoritos())
+    fun verificaProdutoFavorito(nomeItem: String) {
+        if (infoProdutoRepository.verificaProdutoFavorito(nomeItem).isNullOrEmpty()) {
+            _coracaoColorido.postValue(false)
+        } else {
+            _coracaoColorido.postValue(true)
+        }
     }
 
-    fun getListaProdutosCarrinho(){
-        _listaProdutosCarrinho.postValue(infoProdutoRepository.getListaProdutosCarrinho())
-    }
+
+//    fun getListaProdutosCarrinho(){
+//        _listaProdutosCarrinho.postValue(infoProdutoRepository.getListaProdutosCarrinho())
+//    }
 }

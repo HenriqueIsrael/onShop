@@ -32,9 +32,7 @@ class RecyclerViewAdapter(
                     .inflate(R.layout.modelo_item_bloco, parent, false)
             )
         }
-
     }
-
     //Pega os dados e exibe na tela
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is BlocoViewHolder) {
@@ -59,7 +57,6 @@ class RecyclerViewAdapter(
             )
         }
     }
-
 
     override fun getItemCount(): Int {
         return listaProdutos.size

@@ -2,10 +2,7 @@ package com.example.onshop
 
 import android.content.Context
 import com.example.onshop.dados.AppDatabase
-import com.example.onshop.repository.HomeRepository
-import com.example.onshop.repository.InfoProdutoRepository
-import com.example.onshop.repository.LoginRepository
-import com.example.onshop.repository.ProdutoRepository
+import com.example.onshop.repository.*
 import com.example.onshop.sharedpreference.SessionManager
 import com.example.onshop.viewmodel.*
 import org.koin.android.ext.koin.androidContext
@@ -51,5 +48,11 @@ val injectDependence = module {
     }
     single{
         AppDatabase.getInstanceDatabase(androidContext()).carrinhoDAO()
+    }
+    viewModel {
+        FavoritoViewModel(get())
+    }
+    factory{
+        FavoritoRepository(get())
     }
 }

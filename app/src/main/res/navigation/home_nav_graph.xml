@@ -10,11 +10,6 @@
         android:label="HomeFragment"
         tools:layout="@layout/home_fragment"/>
     <fragment
-        android:id="@+id/perfilFragment"
-        android:name="com.example.onshop.fragments.PerfilFragment"
-        android:label="PerfilFragment"
-        tools:layout="@layout/perfil_fragment"/>
-    <fragment
         android:id="@+id/carrinhoFragment"
         android:name="com.example.onshop.fragments.CarrinhoFragment"
         android:label="CarrinhoFragment"

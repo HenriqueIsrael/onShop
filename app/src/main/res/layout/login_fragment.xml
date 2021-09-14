@@ -54,30 +54,6 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!--        <com.google.android.material.textfield.TextInputLayout-->
-        <!--            android:id="@+id/layout_campo_email"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="60dp"-->
-        <!--            android:layout_marginStart="32dp"-->
-        <!--            android:layout_marginTop="60dp"-->
-        <!--            android:layout_marginEnd="32dp"-->
-        <!--            android:hint="E-mail"-->
-        <!--            app:endIconMode="clear_text"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent">-->
-
-        <!--            <com.google.android.material.textfield.TextInputEditText-->
-        <!--                android:id="@+id/campo_email"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="60dp"-->
-        <!--                android:backgroundTint="#FFFFFF"-->
-        <!--                android:inputType="textEmailAddress"-->
-        <!--                android:textSize="18sp" />-->
-
-        <!--        </com.google.android.material.textfield.TextInputLayout>-->
-
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/login_campo_senha"
             android:layout_width="0dp"

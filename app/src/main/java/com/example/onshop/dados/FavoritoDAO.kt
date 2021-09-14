@@ -17,4 +17,7 @@ interface FavoritoDAO {
 
     @Query("SELECT * FROM ModeloFavorito")
     fun  listaProdutosFavorito() : List<ModeloFavorito>
+
+    @Query("SELECT nomeItem FROM  ModeloFavorito WHERE nomeItem = :nomeItem")
+    fun verificaProdutoFavorito(nomeItem: String): String
 }

@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.example.onshop.R
 import com.example.onshop.databinding.InfoProdutoFragmentBinding
 import com.example.onshop.viewmodel.InfoProdutoViewModel
@@ -37,6 +35,8 @@ class InfoProdutoFragment : Fragment() {
 
         val intent = requireActivity().intent
 
+        viewModel.verificaProdutoFavorito(intent.getStringExtra("nomeItem")!!)
+
         setaDadosProdutos()
 
         binding.btFavorito.setOnClickListener {
@@ -55,7 +55,9 @@ class InfoProdutoFragment : Fragment() {
             if(it){
                 viewModel.enviaProdutoFavorito(
                     intent.getStringExtra("imagem")!!,
-                    intent.getStringExtra("nomeItem")!!
+                    intent.getStringExtra("nomeItem")!!,
+                    intent.getStringExtra("descricao")!!,
+                    intent.getStringExtra("preco")!!
                 )
             } else {
                 viewModel.deletaProdutoFavorito(
@@ -89,18 +91,6 @@ class InfoProdutoFragment : Fragment() {
                     intent.getStringExtra("nomeItem")!!
                 )
             }
-        })
-
-        viewModel.getListaProdutosFavoritos()
-
-        viewModel.listaProdutosFavoritos.observe(viewLifecycleOwner,{
-          //  binding.nomedarecyclerview.adapter = nomeadapter(it)
-        })
-
-        viewModel.getListaProdutosCarrinho()
-
-        viewModel.listaProdutosCarrinho.observe(viewLifecycleOwner,{
-            //binding.nomedarecyclerview.adapter = nomeadapter(it)
         })
     }
 
