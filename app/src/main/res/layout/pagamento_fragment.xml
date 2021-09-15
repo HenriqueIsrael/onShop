@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whiteOnShop">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_pagamento"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/whiteOnShop"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back_produto" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_pagamento"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar_pagamento"
+        app:layout_constraintStart_toStartOf="@+id/toolbar_pagamento"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:fontFamily="@font/poppins"
+            android:text="Pagamento"
+            android:textColor="@color/grayOnShop"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/campo_pagamento_endereco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Endereço"
+        android:inputType="textEmailAddress"
+        app:boxStrokeColor="@color/blueOnShop"
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_pagamento">>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pagamento_campo_endereco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fontFamily="@font/poppins"
+            android:inputType="textEmailAddress"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/campo_pagamento_numero"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:hint="Número"
+        app:layout_constraintEnd_toEndOf="@+id/campo_pagamento_endereco"
+        app:layout_constraintStart_toStartOf="@+id/campo_pagamento_endereco"
+        app:layout_constraintTop_toBottomOf="@+id/campo_pagamento_endereco">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pagamento_campo_numero"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:backgroundTint="#FFFFFF"
+            android:fontFamily="@font/poppins"
+            android:inputType="number"
+            android:textSize="18sp">
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cadastro_campo_confirmar_senha"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:hint="CEP"
+        app:layout_constraintEnd_toEndOf="@+id/campo_pagamento_numero"
+        app:layout_constraintStart_toStartOf="@+id/campo_pagamento_numero"
+        app:layout_constraintTop_toBottomOf="@+id/campo_pagamento_numero">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/campo_senha_confirmar_cadastro"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:backgroundTint="#FFFFFF"
+            android:fontFamily="@font/poppins"
+            android:inputType="number"
+            android:textSize="18sp">
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cadastro_campo_numero_cartao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:hint="Número do cartão"
+        app:layout_constraintEnd_toEndOf="@+id/campo_pagamento_numero"
+        app:layout_constraintStart_toStartOf="@+id/campo_pagamento_numero"
+        app:layout_constraintTop_toBottomOf="@+id/cadastro_campo_confirmar_senha">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cadastro_campo_cartao_numero"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:backgroundTint="#FFFFFF"
+            android:fontFamily="@font/poppins"
+            android:inputType="number"
+            android:textSize="18sp">
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cadastro_campo_numero_cartao_data_validade"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:hint="Data de validade"
+        app:layout_constraintEnd_toEndOf="@+id/cadastro_campo_numero_cartao"
+        app:layout_constraintStart_toStartOf="@+id/cadastro_campo_numero_cartao"
+        app:layout_constraintTop_toBottomOf="@+id/cadastro_campo_numero_cartao">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cadastro_campo_numero_cartao_validade_data"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:backgroundTint="#FFFFFF"
+            android:fontFamily="@font/poppins"
+            android:inputType="number"
+            android:textSize="18sp">
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cadastro_campo_numero_cartao_cvv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:hint="CVV"
+        app:layout_constraintEnd_toEndOf="@+id/cadastro_campo_numero_cartao_data_validade"
+        app:layout_constraintStart_toStartOf="@+id/cadastro_campo_numero_cartao_data_validade"
+        app:layout_constraintTop_toBottomOf="@+id/cadastro_campo_numero_cartao_data_validade">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cadastro_campo_numero_cvv_cartao"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:backgroundTint="#FFFFFF"
+            android:fontFamily="@font/poppins"
+            android:inputType="number"
+            android:textSize="18sp">
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/bt_efetuar_pagamento"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins"
+        android:text="Efetuar pagamento"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/cadastro_campo_confirmar_senha"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/cadastro_campo_confirmar_senha"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins"
+        android:text="VALOR TOTAL"
+        android:textColor="@color/grayOnShop"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/cadastro_campo_numero_cartao_cvv"
+        app:layout_constraintTop_toBottomOf="@+id/cadastro_campo_numero_cartao_cvv" />
+
+    <TextView
+        android:id="@+id/pagamento_preco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="R$ 120.00"
+        android:textColor="@color/blueOnShop"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView13"
+        app:layout_constraintEnd_toEndOf="@+id/cadastro_campo_numero_cartao_cvv"
+        app:layout_constraintTop_toTopOf="@+id/textView13" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

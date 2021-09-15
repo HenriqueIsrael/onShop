@@ -9,5 +9,14 @@
         android:id="@+id/infoProdutoFragment"
         android:name="com.example.onshop.fragments.InfoProdutoFragment"
         android:label="InfoProdutoFragment"
-        tools:layout="@layout/info_produto_fragment"/>
+        tools:layout="@layout/info_produto_fragment">
+        <action
+            android:id="@+id/action_infoProdutoFragment_to_pagamentoActivity2"
+            app:destination="@id/pagamentoActivity2" />
+    </fragment>
+    <activity
+        android:id="@+id/pagamentoActivity2"
+        android:name="com.example.onshop.activities.PagamentoActivity"
+        android:label="pagamento_activity"
+        tools:layout="@layout/pagamento_activity" />
 </navigation>

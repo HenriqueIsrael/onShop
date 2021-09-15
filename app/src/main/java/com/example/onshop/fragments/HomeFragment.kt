@@ -31,10 +31,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.toolbarDestaque.setNavigationOnClickListener {
-            AlertDialog.Builder(requireContext()).setMessage("ABA LATERAL").show()
-        }
-
         viewModel.getCategorias()
 
         viewModel.listaCategoriasLiveData.observe(viewLifecycleOwner, {

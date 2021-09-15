@@ -15,6 +15,12 @@
         android:theme="@style/Theme.OnShop"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.PagamentoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.FinalizarCompraActivity"
+            android:exported="true" />
+        <activity
             android:name=".activities.InfoProdutoActivity"
             android:exported="true" />
         <activity

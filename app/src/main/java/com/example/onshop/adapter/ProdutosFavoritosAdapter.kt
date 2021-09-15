@@ -33,7 +33,7 @@ class ProdutosFavoritosAdapter(
             Picasso.with(holder.imagem.context).load(produtosFavoritos[position].imagem)
                 .into(holder.imagem)
             holder.nome.text = produtosFavoritos[position].nomeItem
-            holder.botaoFavoritar.setOnClickListener {
+            holder.itemView.setOnClickListener {
                 cliqueNoProduto.clicouNoProduto(
                     produtosFavoritos[position].imagem,
                     produtosFavoritos[position].nomeItem,
@@ -47,7 +47,6 @@ class ProdutosFavoritosAdapter(
     class produtoFavoritoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imagem: ImageView = itemView.findViewById(R.id.modelo_produto_favorito_imagem)
         val nome: TextView = itemView.findViewById(R.id.modelo_favorito_produto_nome)
-        val botaoFavoritar: ImageView = itemView.findViewById(R.id.bt_item_favoritar)
     }
 
 }

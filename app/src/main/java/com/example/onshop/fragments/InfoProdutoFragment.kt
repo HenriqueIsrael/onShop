@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.onshop.R
 import com.example.onshop.databinding.InfoProdutoFragmentBinding
 import com.example.onshop.viewmodel.InfoProdutoViewModel
@@ -93,6 +94,10 @@ class InfoProdutoFragment : Fragment() {
                 )
             }
         })
+
+        binding.btComprarAgora.setOnClickListener {
+            findNavController().navigate(R.id.action_infoProdutoFragment_to_pagamentoActivity2)
+        }
     }
 
     private fun setaDadosProdutos() {

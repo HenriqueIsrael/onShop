@@ -43,6 +43,10 @@ class CarrinhoFragment : Fragment(),CliqueNoProduto {
             findNavController().navigate(R.id.action_carrinhoFragment_to_homeFragment)
         }
 
+        binding.btFinalizarCompra.setOnClickListener {
+            findNavController().navigate(R.id.action_carrinhoFragment_to_pagamentoActivity)
+        }
+
         viewModel.listaProdutosCarrinho.observe(viewLifecycleOwner,{
             binding.recyclerviewCarrinho.isVisible = true
             binding.recyclerviewCarrinho.layoutManager = LinearLayoutManager(requireContext())

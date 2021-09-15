@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pagamento__nav_graph.xml"
+    app:startDestination="@id/pagamentoFragment">
+
+    <fragment
+        android:id="@+id/pagamentoFragment"
+        android:name="com.example.onshop.fragments.PagamentoFragment"
+        android:label="PagamentoFragment"
+        tools:layout="@layout/pagamento_fragment">
+        <action
+            android:id="@+id/action_pagamentoFragment_to_finalizarCompraFragment"
+            app:destination="@id/finalizarCompraFragment" />
+        <action
+            android:id="@+id/action_pagamentoFragment_to_homeFragment2"
+            app:destination="@id/homeFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/finalizarCompraFragment"
+        android:name="com.example.onshop.fragments.FinalizarCompraFragment"
+        android:label="FinalizarCompraFragment"
+        tools:layout="@layout/finalizar_compras_fragment">
+        <action
+            android:id="@+id/action_finalizarCompraFragment_to_homeActivity2"
+            app:destination="@id/homeActivity2" />
+    </fragment>
+    <fragment
+        android:id="@+id/carrinhoFragment2"
+        android:name="com.example.onshop.fragments.CarrinhoFragment"
+        android:label="CarrinhoFragment"
+        tools:layout="@layout/carrinho_fragment">
+        <action
+            android:id="@+id/action_carrinhoFragment2_to_homeFragment2"
+            app:destination="@id/homeFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment2"
+        android:name="com.example.onshop.fragments.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/home_fragment"/>
+    <activity
+        android:id="@+id/homeActivity2"
+        android:name="com.example.onshop.activities.HomeActivity"
+        android:label="home_activity"
+        tools:layout="@layout/home_activity" />
+</navigation>

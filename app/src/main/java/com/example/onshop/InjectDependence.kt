@@ -61,4 +61,10 @@ val injectDependence = module {
     factory {
         CarrinhoRepository(get())
     }
+    viewModel{
+        PagamentoViewModel(get())
+    }
+    factory{
+        PagamentoRepository(get())
+    }
 }
