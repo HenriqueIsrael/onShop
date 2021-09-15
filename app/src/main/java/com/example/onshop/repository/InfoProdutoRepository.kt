@@ -36,11 +36,11 @@ class InfoProdutoRepository(private val favoritoDAO: FavoritoDAO, private val ca
         carrinhoDAO.deletaProdutoCarrinho(nomeItem)
     }
 
-    fun getListaProdutosCarrinho(): List<ModeloCarrinho>{
-        return carrinhoDAO.listaProdutosCarrinho()
-    }
-
     fun verificaProdutoFavorito(nomeItem: String): String {
         return favoritoDAO.verificaProdutoFavorito(nomeItem)
+    }
+
+    fun verificaProdutoCarrinho(nomeItem: String): String {
+        return carrinhoDAO.verificaProdutoCarrinho(nomeItem)
     }
 }

@@ -16,4 +16,7 @@ interface CarrinhoDAO {
 
     @Query("SELECT * FROM ModeloCarrinho")
     fun  listaProdutosCarrinho() : List<ModeloCarrinho>
+
+    @Query("SELECT nomeItem FROM ModeloCarrinho WHERE nomeItem = :nomeItem")
+    fun verificaProdutoCarrinho(nomeItem: String): String
 }

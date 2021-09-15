@@ -20,9 +20,6 @@ class InfoProdutoViewModel(private val infoProdutoRepository: InfoProdutoReposit
     private val _controleColocaNoCarrinho = MutableLiveData<Boolean>()
     val controleColocaNoCarrinho: LiveData<Boolean> = _controleColocaNoCarrinho
 
-    private val _listaProdutosCarrinho= MutableLiveData<List<ModeloCarrinho>>()
-    val listaProdutosCarrinho: LiveData<List<ModeloCarrinho>> = _listaProdutosCarrinho
-
     fun cliqueBotaoFavorito() {
         if (coracaoColorido.value == true) {
             _coracaoColorido.postValue(false)
@@ -72,8 +69,11 @@ class InfoProdutoViewModel(private val infoProdutoRepository: InfoProdutoReposit
         }
     }
 
-
-//    fun getListaProdutosCarrinho(){
-//        _listaProdutosCarrinho.postValue(infoProdutoRepository.getListaProdutosCarrinho())
-//    }
+    fun verificaProdutoCarrinho(nomeItem: String){
+        if(infoProdutoRepository.verificaProdutoCarrinho(nomeItem).isNullOrEmpty()){
+            _carrinhoColorido.postValue(false)
+        } else {
+            _carrinhoColorido.postValue(true)
+        }
+    }
 }

@@ -24,7 +24,7 @@ class FavoritoViewModel(private val favoritoRepository: FavoritoRepository) : Vi
     fun getListaProdutosFavoritos() {
         viewModelScope.launch {
             _loadingLiveData.postValue(true)
-            delay(2000L)
+            delay(1000L)
             if (favoritoRepository.getListaProdutosFavoritos().isNotEmpty()) {
                 _listaProdutosFavoritos.postValue(favoritoRepository.getListaProdutosFavoritos())
             } else {
@@ -32,6 +32,5 @@ class FavoritoViewModel(private val favoritoRepository: FavoritoRepository) : Vi
             }
             _loadingLiveData.postValue(false)
         }
-
     }
 }

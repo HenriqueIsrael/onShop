@@ -55,4 +55,10 @@ val injectDependence = module {
     factory{
         FavoritoRepository(get())
     }
+    viewModel {
+        CarrinhoViewModel(get())
+    }
+    factory {
+        CarrinhoRepository(get())
+    }
 }

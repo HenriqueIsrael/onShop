@@ -36,6 +36,7 @@ class InfoProdutoFragment : Fragment() {
         val intent = requireActivity().intent
 
         viewModel.verificaProdutoFavorito(intent.getStringExtra("nomeItem")!!)
+        viewModel.verificaProdutoCarrinho(intent.getStringExtra("nomeItem")!!)
 
         setaDadosProdutos()
 

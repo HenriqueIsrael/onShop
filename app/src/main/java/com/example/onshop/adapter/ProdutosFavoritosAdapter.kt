@@ -12,7 +12,10 @@ import com.example.onshop.model.ModeloFavorito
 import com.example.onshop.model.Produto
 import com.squareup.picasso.Picasso
 
-class ProdutosFavoritosAdapter(private val produtosFavoritos: List<ModeloFavorito>,private val cliqueNoProduto: CliqueNoProduto) :
+class ProdutosFavoritosAdapter(
+    private val produtosFavoritos: List<ModeloFavorito>,
+    private val cliqueNoProduto: CliqueNoProduto
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount(): Int {
@@ -27,7 +30,8 @@ class ProdutosFavoritosAdapter(private val produtosFavoritos: List<ModeloFavorit
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is produtoFavoritoViewHolder) {
-            Picasso.with(holder.imagem.context).load(produtosFavoritos[position].imagem).into(holder.imagem)
+            Picasso.with(holder.imagem.context).load(produtosFavoritos[position].imagem)
+                .into(holder.imagem)
             holder.nome.text = produtosFavoritos[position].nomeItem
             holder.botaoFavoritar.setOnClickListener {
                 cliqueNoProduto.clicouNoProduto(
