@@ -46,7 +46,6 @@ class FavoritoFragment: Fragment(), CliqueNoProduto {
 
         viewModel.listaProdutosFavoritos.observe(viewLifecycleOwner,{
             binding.recyclerviewProdutosFavoritos.isVisible = true
-            binding.recyclerviewProdutosFavoritos.layoutManager = LinearLayoutManager(requireContext())
             binding.recyclerviewProdutosFavoritos.adapter = ProdutosFavoritosAdapter(it,this@FavoritoFragment)
         })
 
@@ -65,12 +64,17 @@ class FavoritoFragment: Fragment(), CliqueNoProduto {
         descricao: String,
         preco: String
     ) {
-        val intent = Intent(requireActivity(), InfoProdutoActivity::class.java).apply {
-            putExtra("imagem",imagem)
-            putExtra("nomeItem",nomeItem)
-            putExtra("descricao",descricao)
-            putExtra("preco", preco)
-        }
-        startActivity(intent)
+        startActivity(Intent(requireActivity(), InfoProdutoActivity::class.java).apply {
+            putExtra(IMAGEM_PRODUTO, imagem)
+            putExtra(NOME_PRODUTO, nomeItem)
+            putExtra(DESCRICAO_PRODUTO, descricao)
+            putExtra(PRECO_PRODUTO, preco)
+        })
+    }
+    companion object {
+        const val IMAGEM_PRODUTO = "imagem"
+        const val NOME_PRODUTO = "nomeItem"
+        const val DESCRICAO_PRODUTO = "descricao"
+        const val PRECO_PRODUTO = "preco"
     }
 }

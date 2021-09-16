@@ -49,8 +49,8 @@ class CadastroFragment : Fragment() {
 
         viewModel.fazCadastroLiveData.observe(viewLifecycleOwner,{
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(it.email, it.senha)
-                .addOnCompleteListener {
-                    if (it.isSuccessful) {
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
                         Toast.makeText(requireContext(), "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show()
                         findNavController().navigate(R.id.action_cadastroFragment_to_homeActivity)
                     } else {

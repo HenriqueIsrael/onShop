@@ -7,7 +7,7 @@
     android:background="@drawable/bg_onshop">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar3"
+        android:id="@+id/toolbar_sucesso"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:background="@color/whiteOnShop"
@@ -21,10 +21,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar3"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar3"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_sucesso"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar_sucesso"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/toolbar3"
+        app:layout_constraintStart_toStartOf="@+id/toolbar_sucesso"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
@@ -105,6 +105,6 @@
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar3"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_sucesso"
         app:srcCompat="@drawable/compra_finalizada" />
 </androidx.constraintlayout.widget.ConstraintLayout>

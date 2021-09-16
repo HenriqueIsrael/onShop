@@ -15,9 +15,6 @@ class ProdutoViewModel(private val produtoRepository: ProdutoRepository) : ViewM
     private val _listaProdutosLiveData = MutableLiveData<List<Produto>>()
     val listaProdutosLiveData: LiveData<List<Produto>> = _listaProdutosLiveData
 
-    private val _erroLiveData = MutableLiveData<String>()
-    val erroLiveData: LiveData<String> = _erroLiveData
-
     fun getProdutos(posicao: Int) {
         viewModelScope.launch {
             try {
@@ -39,9 +36,7 @@ class ProdutoViewModel(private val produtoRepository: ProdutoRepository) : ViewM
                     }
                 }
 
-            } catch (e: Exception) {
-                _erroLiveData.postValue(e.message)
-            }
+            } catch (e: Exception) { }
         }
     }
 

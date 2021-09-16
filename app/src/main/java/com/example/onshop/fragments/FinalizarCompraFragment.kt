@@ -26,7 +26,7 @@ class FinalizarCompraFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.toolbar3.setNavigationOnClickListener {
+        binding.toolbarSucesso.setNavigationOnClickListener {
             findNavController().navigate(R.id.action_finalizarCompraFragment_to_homeActivity2)
         }
     }

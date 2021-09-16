@@ -3,10 +3,12 @@ package com.example.onshop.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.onshop.model.ModeloCarrinho
 import com.example.onshop.repository.InfoProdutoRepository
+import kotlinx.coroutines.launch
 
-class InfoProdutoViewModel(private val infoProdutoRepository: InfoProdutoRepository): ViewModel() {
+class InfoProdutoViewModel(private val infoProdutoRepository: InfoProdutoRepository) : ViewModel() {
 
     private val _coracaoColorido = MutableLiveData<Boolean>()
     val coracaoColorido: LiveData<Boolean> = _coracaoColorido
@@ -31,7 +33,7 @@ class InfoProdutoViewModel(private val infoProdutoRepository: InfoProdutoReposit
     }
 
     fun cliqueBotaoCarrinho() {
-        if(carrinhoColorido.value == true) {
+        if (carrinhoColorido.value == true) {
             _carrinhoColorido.postValue(false)
             _controleColocaNoCarrinho.postValue(false)
         } else {
@@ -46,34 +48,49 @@ class InfoProdutoViewModel(private val infoProdutoRepository: InfoProdutoReposit
         descricao: String,
         preco: String
     ) {
-        infoProdutoRepository.salvaProdutoFavorito(imagem,nomeItem,descricao,preco)
+        viewModelScope.launch {
+            infoProdutoRepository.salvaProdutoFavorito(imagem, nomeItem, descricao, preco)
+        }
+
     }
 
     fun deletaProdutoFavorito(nomeItem: String) {
-        infoProdutoRepository.deletaProdutoFavorito(nomeItem)
-    }
-
-    fun enviaProdutoCarrinho(imagem: String, nomeItem: String, descricao: String, preco: String) {
-        infoProdutoRepository.salvaProdutoCarrinho(imagem,nomeItem,descricao,preco)
-    }
-
-    fun deletaProdutoCarrinho(nomeItem: String){
-        infoProdutoRepository.deletaProdutoCarrinho(nomeItem)
-    }
-
-    fun verificaProdutoFavorito(nomeItem: String) {
-        if (infoProdutoRepository.verificaProdutoFavorito(nomeItem).isNullOrEmpty()) {
-            _coracaoColorido.postValue(false)
-        } else {
-            _coracaoColorido.postValue(true)
+        viewModelScope.launch {
+            infoProdutoRepository.deletaProdutoFavorito(nomeItem)
         }
     }
 
-    fun verificaProdutoCarrinho(nomeItem: String){
-        if(infoProdutoRepository.verificaProdutoCarrinho(nomeItem).isNullOrEmpty()){
-            _carrinhoColorido.postValue(false)
-        } else {
-            _carrinhoColorido.postValue(true)
+    fun enviaProdutoCarrinho(imagem: String, nomeItem: String, descricao: String, preco: String) {
+        viewModelScope.launch {
+            infoProdutoRepository.salvaProdutoCarrinho(imagem, nomeItem, descricao, preco)
+        }
+
+    }
+
+    fun deletaProdutoCarrinho(nomeItem: String) {
+        viewModelScope.launch {
+            infoProdutoRepository.deletaProdutoCarrinho(nomeItem)
+        }
+
+    }
+
+    fun verificaProdutoFavorito(nomeItem: String) {
+        viewModelScope.launch {
+            if (infoProdutoRepository.verificaProdutoFavorito(nomeItem).isNullOrEmpty()) {
+                _coracaoColorido.postValue(false)
+            } else {
+                _coracaoColorido.postValue(true)
+            }
+        }
+    }
+
+    fun verificaProdutoCarrinho(nomeItem: String) {
+        viewModelScope.launch {
+            if (infoProdutoRepository.verificaProdutoCarrinho(nomeItem).isNullOrEmpty()) {
+                _carrinhoColorido.postValue(false)
+            } else {
+                _carrinhoColorido.postValue(true)
+            }
         }
     }
 }

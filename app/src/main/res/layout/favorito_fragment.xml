@@ -108,6 +108,7 @@
         android:layout_height="0dp"
         android:background="@color/whiteOnShop"
         android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

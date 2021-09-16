@@ -7,8 +7,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.onshop.FuncoesAuxiliares.convertePreco
 import com.example.onshop.R
 import com.example.onshop.databinding.InfoProdutoFragmentBinding
+import com.example.onshop.fragments.CarrinhoFragment.Companion.DESCRICAO_PRODUTO
+import com.example.onshop.fragments.CarrinhoFragment.Companion.IMAGEM_PRODUTO
+import com.example.onshop.fragments.CarrinhoFragment.Companion.NOME_PRODUTO
+import com.example.onshop.fragments.CarrinhoFragment.Companion.PRECO_PRODUTO
 import com.example.onshop.viewmodel.InfoProdutoViewModel
 import com.squareup.picasso.Picasso
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -37,8 +42,8 @@ class InfoProdutoFragment : Fragment() {
 
         val intent = requireActivity().intent
 
-        viewModel.verificaProdutoFavorito(intent.getStringExtra("nomeItem")!!)
-        viewModel.verificaProdutoCarrinho(intent.getStringExtra("nomeItem")!!)
+        viewModel.verificaProdutoFavorito(intent.getStringExtra(NOME_PRODUTO)!!)
+        viewModel.verificaProdutoCarrinho(intent.getStringExtra(NOME_PRODUTO)!!)
 
         setaDadosProdutos()
 
@@ -58,15 +63,15 @@ class InfoProdutoFragment : Fragment() {
             if(it){
                 Toast.makeText(requireContext(),"Produto adicionado aos favoritos",Toast.LENGTH_SHORT).show()
                 viewModel.enviaProdutoFavorito(
-                    intent.getStringExtra("imagem")!!,
-                    intent.getStringExtra("nomeItem")!!,
-                    intent.getStringExtra("descricao")!!,
-                    intent.getStringExtra("preco")!!
+                    intent.getStringExtra(IMAGEM_PRODUTO)!!,
+                    intent.getStringExtra(NOME_PRODUTO)!!,
+                    intent.getStringExtra(DESCRICAO_PRODUTO)!!,
+                    intent.getStringExtra(PRECO_PRODUTO)!!
                 )
             } else {
                 Toast.makeText(requireContext(),"Produto removido dos favoritos",Toast.LENGTH_SHORT).show()
                 viewModel.deletaProdutoFavorito(
-                    intent.getStringExtra("nomeItem")!!
+                    intent.getStringExtra(NOME_PRODUTO)!!
                 )
             }
         })
@@ -87,15 +92,15 @@ class InfoProdutoFragment : Fragment() {
             if(it){
                 Toast.makeText(requireContext(),"Produto adicionado ao carrinho",Toast.LENGTH_SHORT).show()
                 viewModel.enviaProdutoCarrinho(
-                    intent.getStringExtra("imagem")!!,
-                    intent.getStringExtra("nomeItem")!!,
-                    intent.getStringExtra("descricao")!!,
-                    intent.getStringExtra("preco")!!
+                    intent.getStringExtra(IMAGEM_PRODUTO)!!,
+                    intent.getStringExtra(NOME_PRODUTO)!!,
+                    intent.getStringExtra(DESCRICAO_PRODUTO)!!,
+                    intent.getStringExtra(PRECO_PRODUTO)!!
                 )
             } else {
                 Toast.makeText(requireContext(),"Produto removido do carrinho",Toast.LENGTH_SHORT).show()
                 viewModel.deletaProdutoCarrinho(
-                    intent.getStringExtra("nomeItem")!!
+                    intent.getStringExtra(NOME_PRODUTO)!!
                 )
             }
         })
@@ -110,18 +115,13 @@ class InfoProdutoFragment : Fragment() {
     private fun setaDadosProdutos() {
         val intent = requireActivity().intent
 
-        Picasso.with(binding.imagemInfoProduto.context).load(intent.getStringExtra("imagem"))
+        Picasso.with(binding.imagemInfoProduto.context).load(intent.getStringExtra(IMAGEM_PRODUTO))
             .into(binding.imagemInfoProduto)
 
-        binding.nomeInfoProduto.text = intent.getStringExtra("nomeItem")
+        binding.nomeInfoProduto.text = intent.getStringExtra(NOME_PRODUTO)
 
-        binding.descricaoInfoProduto.text = intent.getStringExtra("descricao")
+        binding.descricaoInfoProduto.text = intent.getStringExtra(DESCRICAO_PRODUTO)
 
-        binding.precoInfoProduto.text = convertePreco(intent.getStringExtra("preco")!!)
-    }
-
-    fun convertePreco(preco: String): String {
-        return NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
-            .format(preco.toDouble())
+        binding.precoInfoProduto.text = convertePreco(intent.getStringExtra(PRECO_PRODUTO)!!.toDouble())
     }
 }

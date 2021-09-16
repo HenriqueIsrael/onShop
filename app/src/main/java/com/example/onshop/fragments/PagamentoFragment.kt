@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.onshop.FuncoesAuxiliares.convertePreco
 import com.example.onshop.R
 import com.example.onshop.databinding.PagamentoFragmentBinding
 import com.example.onshop.viewmodel.PagamentoViewModel
@@ -36,7 +37,8 @@ class PagamentoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btEfetuarPagamento.setOnClickListener {
-            viewModel.validaCamposPagamento(binding.pagamentoCampoEndereco.text.toString(),
+            viewModel.validaCamposPagamento(
+                    binding.pagamentoCampoEndereco.text.toString(),
                     binding.pagamentoCampoNumero.text.toString(),
                     binding.pagamentoCampoCep.text.toString(),
                     binding.cadastroCampoCartaoNumero.text.toString(),
@@ -67,10 +69,5 @@ class PagamentoFragment : Fragment() {
         viewModel.precoProdutosLiveData.observe(viewLifecycleOwner, {
             binding.pagamentoPreco.text = convertePreco(it)
         })
-    }
-
-    fun convertePreco(preco: Double): String {
-        return NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
-            .format(preco)
     }
 }

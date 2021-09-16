@@ -6,16 +6,21 @@ import androidx.core.content.edit
 class SessionManager(private val preference: SharedPreferences) {
     fun saveLogin(email: String, senha: String) {
         preference.edit {
-            putString("email",email)
-            putString("senha",senha)
+            putString(EMAIL,email)
+            putString(SENHA,senha)
         }
     }
 
     fun getEmail(): String?{
-        return preference.getString("email","")
+        return preference.getString(EMAIL,"")
     }
 
     fun getSenha(): String?{
-        return preference.getString("senha","")
+        return preference.getString(SENHA,"")
+    }
+
+    companion object{
+        const val EMAIL = "email"
+        const val SENHA = "senha"
     }
 }

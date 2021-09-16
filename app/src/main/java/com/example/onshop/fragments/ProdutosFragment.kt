@@ -9,8 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.onshop.activities.InfoProdutoActivity
+import com.example.onshop.adapter.CategoriasViewPagerAdapter.Companion.ORDENACAO_LISTA_DESTAQUES
+import com.example.onshop.adapter.CategoriasViewPagerAdapter.Companion.POSICAO_VIEW_PAGER_CATEGORIAS
 import com.example.onshop.adapter.CliqueNoProduto
-import com.example.onshop.adapter.RecyclerViewAdapter
+import com.example.onshop.adapter.ProdutosRecyclerViewDestaquesAdapter
 import com.example.onshop.databinding.ProdutosFragmentBinding
 import com.example.onshop.viewmodel.ProdutoViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,16 +34,16 @@ class ProdutosFragment : Fragment(), CliqueNoProduto {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getProdutos(requireArguments().getInt("posicao"))
+        viewModel.getProdutos(requireArguments().getInt(POSICAO_VIEW_PAGER_CATEGORIAS))
 
         viewModel.listaProdutosLiveData.observe(viewLifecycleOwner,{
-            binding.recyclerViewProdutos.adapter = RecyclerViewAdapter(
+            binding.recyclerViewProdutos.adapter = ProdutosRecyclerViewDestaquesAdapter(
                 it,
-                requireArguments().getInt("ordenar"),this@ProdutosFragment
+                requireArguments().getInt(ORDENACAO_LISTA_DESTAQUES),this@ProdutosFragment
             )
         })
 
-        if (requireArguments().getInt("ordenar") == 1) {
+        if (requireArguments().getInt(ORDENACAO_LISTA_DESTAQUES) == 1) {
             binding.recyclerViewProdutos.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         } else {
@@ -56,13 +58,18 @@ class ProdutosFragment : Fragment(), CliqueNoProduto {
         descricao: String,
         preco: String
     ) {
-        val intent = Intent(requireActivity(), InfoProdutoActivity::class.java).apply {
-            putExtra("imagem",imagem)
-            putExtra("nomeItem",nomeItem)
-            putExtra("descricao",descricao)
-            putExtra("preco", preco)
-        }
-        startActivity(intent)
+        startActivity(Intent(requireActivity(), InfoProdutoActivity::class.java).apply {
+            putExtra(IMAGEM_PRODUTO, imagem)
+            putExtra(NOME_PRODUTO, nomeItem)
+            putExtra(DESCRICAO_PRODUTO, descricao)
+            putExtra(PRECO_PRODUTO, preco)
+        })
+    }
+    companion object {
+        const val IMAGEM_PRODUTO = "imagem"
+        const val NOME_PRODUTO = "nomeItem"
+        const val DESCRICAO_PRODUTO = "descricao"
+        const val PRECO_PRODUTO = "preco"
     }
 }
 

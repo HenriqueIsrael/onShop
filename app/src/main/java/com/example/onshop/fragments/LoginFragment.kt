@@ -19,9 +19,9 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class LoginFragment: Fragment() {
+class LoginFragment : Fragment() {
 
-    private var _binding: LoginFragmentBinding?= null
+    private var _binding: LoginFragmentBinding? = null
     private val binding: LoginFragmentBinding get() = _binding!!
     private val viewModel: LoginViewModel by viewModel()
     private var auth = Firebase.auth
@@ -46,33 +46,37 @@ class LoginFragment: Fragment() {
 
         viewModel.getSenha()
 
-        viewModel.senhaLiveData.observe(viewLifecycleOwner,{
+        viewModel.senhaLiveData.observe(viewLifecycleOwner, {
             binding.campoSenha.setText(it)
         })
 
         viewModel.switchDefaultTrue()
 
         binding.btEfetuarLogin.setOnClickListener {
-            viewModel.validaDadosLogin(binding.campoEmail.text.toString(),binding.campoSenha.text.toString())
+            viewModel.validaDadosLogin(
+                binding.campoEmail.text.toString(),
+                binding.campoSenha.text.toString()
+            )
         }
 
-        viewModel.validaDadosLiveData.observe(viewLifecycleOwner,{
+        viewModel.validaDadosLiveData.observe(viewLifecycleOwner, {
             auth.signInWithEmailAndPassword(it.email, it.senha)
                 .addOnCompleteListener(requireActivity()) { task ->
                     if (task.isSuccessful) {
                         findNavController().navigate(R.id.action_loginFragment_to_homeActivity)
                     } else {
-                        AlertDialog.Builder(requireContext()).setMessage("Informações de login incorretas   =(").show()
+                        AlertDialog.Builder(requireContext())
+                            .setMessage("Informações de login incorretas   =(").show()
                     }
                 }
         })
 
-        viewModel.loadingLiveData.observe(viewLifecycleOwner,{
+        viewModel.loadingLiveData.observe(viewLifecycleOwner, {
             binding.loading.isVisible = it
         })
 
 
-        viewModel.erroEmailLiveData.observe(viewLifecycleOwner,{
+        viewModel.erroEmailLiveData.observe(viewLifecycleOwner, {
             binding.loginCampoEmail.error = it
         })
 
@@ -84,18 +88,20 @@ class LoginFragment: Fragment() {
             binding.loginCampoSenha.isErrorEnabled = false
         }
 
-        viewModel.erroSenhaLiveData.observe(viewLifecycleOwner,{
+        viewModel.erroSenhaLiveData.observe(viewLifecycleOwner, {
             binding.loginCampoSenha.error = it
         })
 
         viewModel.switchDefaultTrueLiveData.observe(viewLifecycleOwner, {
-            if(it)
-                binding.switchSalvaLogin.toggle()
+            binding.switchSalvaLogin.toggle()
         })
 
         binding.switchSalvaLogin.setOnCheckedChangeListener { _, isChecked ->
-            if(isChecked){
-                viewModel.saveLogin(binding.campoEmail.text.toString(), binding.campoSenha.text.toString())
+            if (isChecked) {
+                viewModel.saveLogin(
+                    binding.campoEmail.text.toString(),
+                    binding.campoSenha.text.toString()
+                )
             } else {
                 viewModel.deleteLogin()
             }

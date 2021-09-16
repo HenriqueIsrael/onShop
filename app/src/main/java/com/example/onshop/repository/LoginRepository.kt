@@ -7,13 +7,10 @@ class LoginRepository(private val sharedPreference: SessionManager) {
         sharedPreference.saveLogin(email,senha)
     }
 
-    fun getEmail(): String {
-        return sharedPreference.getEmail()!!
-    }
+    fun getEmail(): String = sharedPreference.getEmail()!!
 
-    fun getSenha(): String {
-        return sharedPreference.getSenha()!!
-    }
+
+    fun getSenha(): String = sharedPreference.getSenha()!!
 
 
 }

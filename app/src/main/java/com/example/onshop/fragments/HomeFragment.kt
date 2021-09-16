@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.onshop.R
-import com.example.onshop.adapter.ViewPagerAdapter
+import com.example.onshop.adapter.CategoriasViewPagerAdapter
 import com.example.onshop.databinding.HomeFragmentBinding
 import com.example.onshop.viewmodel.HomeViewModel
 import com.google.android.material.tabs.TabLayout
@@ -33,32 +33,25 @@ class HomeFragment : Fragment() {
 
         viewModel.getCategorias()
 
+        viewModel.erroLiveData.observe(viewLifecycleOwner,{
+            AlertDialog.Builder(requireContext()).setMessage(it).show()
+        })
+
         viewModel.listaCategoriasLiveData.observe(viewLifecycleOwner, {
-            binding.viewPagerProdutos.adapter = ViewPagerAdapter(this, ORDENAR_BLOCOS, it.size)
+            binding.viewPagerProdutos.adapter = CategoriasViewPagerAdapter(this, ORDENAR_BLOCOS, it.size)
             binding.tabLayoutCategorias.tabMode = TabLayout.MODE_SCROLLABLE
             TabLayoutMediator(
                 binding.tabLayoutCategorias,
                 binding.viewPagerProdutos
             ) { tab, position ->
                 tab.text = it[position].nome
-//                when (position) {
-//                    0 -> {
-//                        tab.text = "Cadeiras"
-//                    }
-//                    1 -> {
-//                        tab.text = "Notebooks"
-//                    }
-//                    2 -> {
-//                        tab.text = "Celulares"
-//                    }
-//                }
             }.attach()
         })
 
         binding.toolbarDestaque.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.ordenarLista -> {
-                    binding.viewPagerProdutos.adapter = ViewPagerAdapter(
+                    binding.viewPagerProdutos.adapter = CategoriasViewPagerAdapter(
                         this,
                         ORDENAR_LISTA,
                         5
@@ -66,7 +59,7 @@ class HomeFragment : Fragment() {
                     true
                 }
                 R.id.ordenarBlocos -> {
-                    binding.viewPagerProdutos.adapter = ViewPagerAdapter(
+                    binding.viewPagerProdutos.adapter = CategoriasViewPagerAdapter(
                         this,
                         ORDENAR_BLOCOS,
                         5

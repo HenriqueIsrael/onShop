@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.onshop.FuncoesAuxiliares.convertePreco
 import com.example.onshop.R
 import com.example.onshop.model.ModeloCarrinho
 import com.squareup.picasso.Picasso
@@ -17,23 +18,37 @@ class CarrinhoAdapter(
     private val cliqueNoProduto: CliqueNoProduto
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun getItemCount(): Int {
-        return produtosCarrinho.size
-    }
+    override fun getItemCount(): Int = produtosCarrinho.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val card = LayoutInflater.from(parent.context)
-            .inflate(R.layout.modelo_produto_carrinho,parent, false)
-        return produtoCarrinhoViewHolder(card)
+        return ProdutoCarrinhoViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.modelo_produto_carrinho, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if(holder is produtoCarrinhoViewHolder){
-            Picasso.with(holder.imagem.context).load(produtosCarrinho[position].imagem)
-                .into(holder.imagem)
-            holder.nome.text = produtosCarrinho[position].nomeItem
-            holder.preco.text = convertePreco(produtosCarrinho[position].preco.toDouble())
-            holder.itemView.setOnClickListener {
+        if (holder is ProdutoCarrinhoViewHolder) {
+            holder.bind(produtosCarrinho, position, cliqueNoProduto)
+        }
+    }
+
+    class ProdutoCarrinhoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        private val imagem: ImageView = itemView.findViewById(R.id.modelo_produto_carrinho_imagem)
+        private val nome: TextView = itemView.findViewById(R.id.modelo_carrinho_produto_nome)
+        private val preco: TextView = itemView.findViewById(R.id.modelo_carrinho_carrinho_preco)
+
+        fun bind(
+            produtosCarrinho: List<ModeloCarrinho>,
+            position: Int,
+            cliqueNoProduto: CliqueNoProduto
+        ) {
+            Picasso.with(imagem.context).load(produtosCarrinho[position].imagem)
+                .into(imagem)
+            nome.text = produtosCarrinho[position].nomeItem
+            preco.text = convertePreco(produtosCarrinho[position].preco.toDouble())
+            itemView.setOnClickListener {
                 cliqueNoProduto.clicouNoProduto(
                     produtosCarrinho[position].imagem,
                     produtosCarrinho[position].nomeItem,
@@ -42,15 +57,5 @@ class CarrinhoAdapter(
                 )
             }
         }
-    }
-
-    class produtoCarrinhoViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val imagem: ImageView = itemView.findViewById(R.id.modelo_produto_carrinho_imagem)
-        val nome: TextView = itemView.findViewById(R.id.modelo_carrinho_produto_nome)
-        val preco: TextView = itemView.findViewById(R.id.modelo_carrinho_carrinho_preco)
-    }
-    fun convertePreco(preco: Double): String {
-        return NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
-            .format(preco)
     }
 }
