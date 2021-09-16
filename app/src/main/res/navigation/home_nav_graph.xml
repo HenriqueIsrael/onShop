@@ -18,8 +18,8 @@
             android:id="@+id/action_carrinhoFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
         <action
-            android:id="@+id/action_carrinhoFragment_to_pagamentoActivity"
-            app:destination="@id/pagamentoActivity" />
+            android:id="@+id/action_carrinhoFragment_to_fluxoPagamentoActivity"
+            app:destination="@id/fluxoPagamentoActivity" />
     </fragment>
     <fragment
         android:id="@+id/favoritoFragment"
@@ -31,8 +31,8 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <activity
-        android:id="@+id/pagamentoActivity"
-        android:name="com.example.onshop.activities.PagamentoActivity"
-        android:label="pagamento_activity"
-        tools:layout="@layout/pagamento_activity" />
+        android:id="@+id/fluxoPagamentoActivity"
+        android:name="com.example.onshop.activities.FluxoPagamentoActivity"
+        android:label="fluxo_pagamento_activity"
+        tools:layout="@layout/fluxo_pagamento_activity" />
 </navigation>

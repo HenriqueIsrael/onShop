@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.onshop.R
@@ -55,6 +56,7 @@ class InfoProdutoFragment : Fragment() {
 
         viewModel.controleSalvaFavorito.observe(viewLifecycleOwner,{
             if(it){
+                Toast.makeText(requireContext(),"Produto adicionado aos favoritos",Toast.LENGTH_SHORT).show()
                 viewModel.enviaProdutoFavorito(
                     intent.getStringExtra("imagem")!!,
                     intent.getStringExtra("nomeItem")!!,
@@ -62,6 +64,7 @@ class InfoProdutoFragment : Fragment() {
                     intent.getStringExtra("preco")!!
                 )
             } else {
+                Toast.makeText(requireContext(),"Produto removido dos favoritos",Toast.LENGTH_SHORT).show()
                 viewModel.deletaProdutoFavorito(
                     intent.getStringExtra("nomeItem")!!
                 )
@@ -82,6 +85,7 @@ class InfoProdutoFragment : Fragment() {
 
         viewModel.controleColocaNoCarrinho.observe(viewLifecycleOwner,{
             if(it){
+                Toast.makeText(requireContext(),"Produto adicionado ao carrinho",Toast.LENGTH_SHORT).show()
                 viewModel.enviaProdutoCarrinho(
                     intent.getStringExtra("imagem")!!,
                     intent.getStringExtra("nomeItem")!!,
@@ -89,6 +93,7 @@ class InfoProdutoFragment : Fragment() {
                     intent.getStringExtra("preco")!!
                 )
             } else {
+                Toast.makeText(requireContext(),"Produto removido do carrinho",Toast.LENGTH_SHORT).show()
                 viewModel.deletaProdutoCarrinho(
                     intent.getStringExtra("nomeItem")!!
                 )
@@ -96,8 +101,10 @@ class InfoProdutoFragment : Fragment() {
         })
 
         binding.btComprarAgora.setOnClickListener {
-            findNavController().navigate(R.id.action_infoProdutoFragment_to_pagamentoActivity2)
+            viewModel.cliqueBotaoCarrinho()
+            findNavController().navigate(R.id.action_infoProdutoFragment_to_pagamentoFragment2)
         }
+
     }
 
     private fun setaDadosProdutos() {

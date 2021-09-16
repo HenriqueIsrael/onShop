@@ -11,12 +11,12 @@
         android:label="InfoProdutoFragment"
         tools:layout="@layout/info_produto_fragment">
         <action
-            android:id="@+id/action_infoProdutoFragment_to_pagamentoActivity2"
-            app:destination="@id/pagamentoActivity2" />
+            android:id="@+id/action_infoProdutoFragment_to_pagamentoFragment2"
+            app:destination="@id/pagamentoFragment2" />
     </fragment>
-    <activity
-        android:id="@+id/pagamentoActivity2"
-        android:name="com.example.onshop.activities.PagamentoActivity"
-        android:label="pagamento_activity"
-        tools:layout="@layout/pagamento_activity" />
+    <fragment
+        android:id="@+id/pagamentoFragment2"
+        android:name="com.example.onshop.fragments.PagamentoFragment"
+        android:label="PagamentoFragment"
+        tools:layout="@layout/pagamento_fragment"/>
 </navigation>

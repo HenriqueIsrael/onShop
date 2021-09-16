@@ -38,7 +38,6 @@ class CadastroViewModel : ViewModel() {
                     _fazCadastroLiveData.postValue(User(email,senha))
                     _loadingLiveData.postValue(false)
                 }
-
             }
     }
 }

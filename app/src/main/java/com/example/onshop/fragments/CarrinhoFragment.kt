@@ -44,7 +44,7 @@ class CarrinhoFragment : Fragment(),CliqueNoProduto {
         }
 
         binding.btFinalizarCompra.setOnClickListener {
-            findNavController().navigate(R.id.action_carrinhoFragment_to_pagamentoActivity)
+            findNavController().navigate(R.id.action_carrinhoFragment_to_fluxoPagamentoActivity)
         }
 
         viewModel.listaProdutosCarrinho.observe(viewLifecycleOwner,{
