@@ -18,5 +18,22 @@
         android:id="@+id/pagamentoFragment2"
         android:name="com.example.onshop.fragments.PagamentoFragment"
         android:label="PagamentoFragment"
-        tools:layout="@layout/pagamento_fragment"/>
+        tools:layout="@layout/pagamento_fragment">
+        <action
+            android:id="@+id/action_pagamentoFragment_to_finalizarCompraFragment"
+            app:destination="@id/finalizarCompraFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/homeActivity2"
+        android:name="com.example.onshop.activities.HomeActivity"
+        android:label="home_activity"
+        tools:layout="@layout/home_activity" />
+    <fragment
+        android:id="@+id/finalizarCompraFragment"
+        android:name="com.example.onshop.fragments.FinalizarCompraFragment"
+        android:label="FinalizarCompraFragment" >
+        <action
+            android:id="@+id/action_finalizarCompraFragment_to_homeActivity2"
+            app:destination="@id/homeActivity2" />
+    </fragment>
 </navigation>

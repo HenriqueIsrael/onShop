@@ -21,6 +21,11 @@ class CadastroFragment : Fragment() {
 
     private var _binding: CadastroFragmentBinding? = null
     private val binding: CadastroFragmentBinding get() = _binding!!
+    /*
+    private val binding: CadastroFragmentBinding by lazy{
+       CadastroFragmentBinding.inflate(inflater, container, false)
+    }
+    */
     private val viewModel: CadastroViewModel by viewModel()
 
     override fun onCreateView(
