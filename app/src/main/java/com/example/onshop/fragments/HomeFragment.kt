@@ -44,7 +44,7 @@ class HomeFragment : Fragment() {
                 binding.tabLayoutCategorias,
                 binding.viewPagerProdutos
             ) { tab, position ->
-                tab.text = it[position].nome
+                tab.text = it[position].name
             }.attach()
         })
 

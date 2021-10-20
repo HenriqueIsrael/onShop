@@ -1,27 +1,30 @@
 package com.example.onshop
 
 import com.example.onshop.model.Categorias
+import com.example.onshop.model.Id
 import com.example.onshop.model.Produto
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("produtos")
+    @GET("products/{id}")
     suspend fun getProdutos(
-        @Query("categoria_id") categoria : Int
+        @Path("id") categoryId : Int
     ): Response<List<Produto>>
 
-    @GET("categorias")
+    @GET("categories")
     suspend fun getCategorias(): Response<List<Categorias>>
 
     companion object {
         fun getEndPointInstance(): ApiService {
             return Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3000/")
+                .baseUrl("https://onshop-api.herokuapp.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build().create(ApiService::class.java)
         }

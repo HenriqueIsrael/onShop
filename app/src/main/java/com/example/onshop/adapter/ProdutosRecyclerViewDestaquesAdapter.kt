@@ -52,17 +52,17 @@ class ProdutosRecyclerViewDestaquesAdapter(
         private val preco: TextView = itemView.findViewById(R.id.preco_produto_bloco)
 
         fun bind(listaProdutos: List<Produto>, position: Int, cliqueNoProduto: CliqueNoProduto) {
-            nomeItem.text = listaProdutos[position].nome
-            preco.text = convertePreco(listaProdutos[position].preco)
-            descricao.text = listaProdutos[position].descricao
-            Picasso.with(imagem.context).load(listaProdutos[position].imagem)
+            nomeItem.text = listaProdutos[position].name
+            preco.text = convertePreco(listaProdutos[position].price)
+            descricao.text = listaProdutos[position].description
+            Picasso.with(imagem.context).load(listaProdutos[position].image)
                 .into(imagem)
             itemView.setOnClickListener {
                 cliqueNoProduto.clicouNoProduto(
-                    listaProdutos[position].imagem,
-                    listaProdutos[position].nome,
-                    listaProdutos[position].descricao,
-                    listaProdutos[position].preco.toString()
+                    listaProdutos[position].image,
+                    listaProdutos[position].name,
+                    listaProdutos[position].description,
+                    listaProdutos[position].price.toString()
                 )
             }
         }
@@ -77,17 +77,17 @@ class ProdutosRecyclerViewDestaquesAdapter(
         private val preco: TextView = itemView.findViewById(R.id.preco_produto_lista)
 
         fun bind(listaProdutos: List<Produto>, position: Int, cliqueNoProduto: CliqueNoProduto) {
-            nomeItem.text = listaProdutos[position].nome
-            preco.text = convertePreco(listaProdutos[position].preco)
-            descricao.text = listaProdutos[position].descricao
-            Picasso.with(imagem.context).load(listaProdutos[position].imagem)
+            nomeItem.text = listaProdutos[position].name
+            preco.text = convertePreco(listaProdutos[position].price)
+            descricao.text = listaProdutos[position].description
+            Picasso.with(imagem.context).load(listaProdutos[position].image)
                 .into(imagem)
             itemView.setOnClickListener {
                 cliqueNoProduto.clicouNoProduto(
-                    listaProdutos[position].imagem,
-                    listaProdutos[position].nome,
-                    listaProdutos[position].descricao,
-                    listaProdutos[position].preco.toString()
+                    listaProdutos[position].image,
+                    listaProdutos[position].name,
+                    listaProdutos[position].description,
+                    listaProdutos[position].price.toString()
                 )
             }
         }
