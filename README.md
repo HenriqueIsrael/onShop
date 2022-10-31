@@ -25,9 +25,6 @@ Desenvolver um aplicativo de vendas para aprimorar meus conhecimentos, com ênfa
 - Substituir o sharedPreference pelo firebase no login
 - Cadastros de novos usuários usando o firebase
 
-## Apresentação
-
- Apresentação das telas e funcionalidades do app:
 
 
   
